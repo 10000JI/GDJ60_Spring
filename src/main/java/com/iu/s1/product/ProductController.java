@@ -1,5 +1,8 @@
 package com.iu.s1.product;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,9 +12,14 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/product/*")
 public class ProductController {
 	
+	@Autowired
+	//의존성 주입
+	private ProductService productService;
+	
 	@RequestMapping(value="list")
-	public String getProductList() {
-		System.out.println("Product List");
+	public String getProductList() throws Exception  {
+		List<ProductDTO> ar  = productService.getProductList();
+		System.out.println(ar.size()>0);
 		return "product/productList";
 	}
 	
