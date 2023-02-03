@@ -37,7 +37,6 @@ public class ProductController {
 		System.out.println(ar.size()>0);
 		mv.setViewName("product/productList");
 		mv.addObject("list", ar);
-		System.out.println(ar.get(0).getProductName());
 		return mv;
 	}
 	
@@ -72,9 +71,19 @@ public class ProductController {
 	}
 	
 	//getProductAdd
-	@RequestMapping(value="productAdd")
-	public void getProductAdd() {
-		
+	@RequestMapping(value="productAdd", method = RequestMethod.GET)
+	public void ProductAdd() {
+		//메소드는 Get
+	}
+	
+	@RequestMapping(value="productAdd", method = RequestMethod.POST)
+	public String ProductAdd(ProductDTO productDTO) throws Exception {
+		//productAdd.jsp에서 등록했을 때 넘어가는 메소드
+		//등록할때는 메소드는 Post로 받을 것이다. (서버내에서 실행)
+		int result = productService.setAddProduct(productDTO, null);
+		System.out.println(result == 1);
+		//상대주소
+		return "redirect:./list";
 	}
 	
 	@RequestMapping(value="update")

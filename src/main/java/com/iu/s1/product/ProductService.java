@@ -29,9 +29,12 @@ public class ProductService {
 		Long productNUM = productDAO.getProductNum();
 		productDTO.setProductNum(productNUM);
 		int result = productDAO.setaddProduct(productDTO);
-		for(ProductOptionDTO productOptionDTO: ar) {
-			productOptionDTO.setProductNum(productNUM);
-			result = productDAO.setaddProductOption(productOptionDTO);
+		
+		if (ar != null) {
+			for (ProductOptionDTO productOptionDTO : ar) {
+				productOptionDTO.setProductNum(productNUM);
+				result = productDAO.setaddProductOption(productOptionDTO);
+			}
 		}
 		return result;
 	}

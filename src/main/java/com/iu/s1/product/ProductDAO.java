@@ -96,7 +96,7 @@ public class ProductDAO {
 			productDTO.setProductNum(rs.getLong("PRODUCTNUM"));
 			productDTO.setProductName(rs.getString("PRODUCTNAME"));
 			productDTO.setProductDetail(rs.getString("PRODUCTDETAIL"));
-			productDTO.setProductJumsu(rs.getDouble("PRODUCTNUM"));
+			productDTO.setProductJumsu(rs.getDouble("PRODUCTJUMSU"));
 		} else {
 			productDTO = null;
 		}
