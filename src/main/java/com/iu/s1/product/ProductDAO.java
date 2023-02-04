@@ -116,4 +116,9 @@ public class ProductDAO {
 			DBConnection.disConnection(st, connection);
 			return result;
 		}
+		
+//		public int setUpdateProduct() {
+//			Connection connection = DBConnection.getConnection();
+//			String sql = "UPDATE PRODUCT SET WHERE PRODUCTNUM=?"
+//		}
 }

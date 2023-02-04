@@ -14,6 +14,7 @@ public class ProductService {
 	//의존성 주입
 	private ProductDAO productDAO;
 	
+	//public int set
 	
 	public ProductDTO getProductDetail(ProductDTO productDTO)throws Exception{
 		return productDAO.getProductDetail(productDTO);
