@@ -8,7 +8,7 @@ import java.util.List;
 import com.iu.s1.util.DBConnection;
 import org.springframework.stereotype.Repository;
 
-
+@Repository
 public class ProductDAO {
 	//getMax
 		public Long getProductNum() throws Exception {
