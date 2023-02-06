@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <configuration>
+  	<typeAliases>
+  		<!-- 규칙: alias는 type의 마지막의 클래스명을 적어준다 -->
+  		<!-- 나중을 생각해서 미리 적으면 안됨, 없는 클래스명을 적는거 X (Mapper도 마찬가지)-->
+  		<typeAlias type="com.iu.s1.product.ProductDTO" alias="ProductDTO"/>
+  		
+  		<typeAlias type="java.lang.Long" alias="Long"/>
+  	</typeAliases>
+  </configuration>

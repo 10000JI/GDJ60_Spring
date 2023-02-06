@@ -15,9 +15,11 @@
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
 	</bean>
 	
-	<!-- dataSource이름으로 만든 객체(Connection)와 그외 나머지(sql,PreperanceStateMent,ResultSet 등등..)이 존재하는 OOOOMapper.xml 연결 객체-->
+	<!-- dataSource이름으로 만든 객체(Connection)와 OOOOMapper.xml, config.xml 연결 객체 -->
+	<!-- Mapper는 여러 파일이 존재 (ex> ProductMapper.xml, MemberMapper.xml 등)하므로 복수형 s를 붙임 , OOOOMapper.xml 이므로 *로 대체-->
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:database/config/MybatisConfig.xml"></property>
 		<property name="mapperLocations" value="classpath:database/mappers/*Mapper.xml"></property>
 	</bean>
 	
