@@ -14,12 +14,12 @@ public class DBConnection {
 		//멤버 메서드 (X)
 		//클래스 메서드 (접근지정자 = static)
 		//객체를 만들지 않고 호출, 클래스명.메소드명
+		//localhost는 127.0.0.1 또는 자신의 실제 ip주소 써도 된다
 		
 		//1. 연결 정보
 		String user = "user01";
 		String password = "user01";
 		String url = "jdbc:oracle:thin:@localhost:1521/xe";
-		//localhost는 127.0.0.1 또는 자신의 실제 ip주소 써도 된다
 		String driver ="oracle.jdbc.driver.OracleDriver";
 		
 		//2.Driver를 메모리에 로딩

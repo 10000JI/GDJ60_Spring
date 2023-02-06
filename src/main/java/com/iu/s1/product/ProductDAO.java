@@ -5,11 +5,43 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.sql.DataSource;
+
 import com.iu.s1.util.DBConnection;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class ProductDAO {
+	
+	@Autowired
+	private SqlSession sqlSession;
+	//어느 Mapper를 쓸 것인지 명시
+	//변수명은 Mapper의 namespace와 동일하게 + . 
+	private final String NAMESPACE = "com.iu.s1.product.ProductDAO.";
+	
+	//delete
+	public int setProductDelete(Long productNum) throws Exception {
+		int result = 0;
+		//1. DB연결
+		Connection connection = DBConnection.getConnection();
+		//2. SQL 생성
+		String sql ="DELETE PRODUCT WHERE PRODUCTNUM=?";
+		//3. 미리보내기
+		PreparedStatement st = connection.prepareStatement(sql);
+		//4. ?세팅
+		st.setLong(1,productNum);
+		//5. 최종 전송 및 결과 처리
+		result = st.executeUpdate();
+		//6. 연결해제
+		DBConnection.disConnection(st, connection);
+		return result;
+	}
+	
 	//getMax
 	public Long getProductNum() throws Exception {
 		Connection connection = DBConnection.getConnection();
@@ -61,60 +93,22 @@ public class ProductDAO {
 //-------------------------------------------------------------------------------------
 //product
 	public List<ProductDTO> getProductList() throws Exception{
-		//LinkedList를 만들어도 List, ArrayList를 만들어도 List 
-		//즉 메소드 리턴타입을 부모형으로 만들어 수정하기 편하게 만들어준다.
-		ArrayList<ProductDTO> ar = new ArrayList<ProductDTO>();
 		
-		Connection connection = DBConnection.getConnection();
-		String sql = "SELECT PRODUCTNUM, PRODUCTNAME, PRODUCTJUMSU"
-				+ " FROM PRODUCT ORDER BY PRODUCTJUMSU DESC";
-		
-		PreparedStatement st = connection.prepareStatement(sql);
-		ResultSet rs= st.executeQuery();
-		while(rs.next()) {
-			ProductDTO productDTO = new ProductDTO();
-			productDTO.setProductNum(rs.getLong("PRODUCTNUM"));
-			productDTO.setProductName(rs.getString("PRODUCTNAME"));
-			productDTO.setProductJumsu(rs.getDouble("PRODUCTJUMSU"));
-			ar.add(productDTO);
-		}
-		DBConnection.disConnection(rs, st, connection);
-		
-		return ar;
+		return sqlSession.selectList(NAMESPACE+"getProductList");
 	}
 	
 //getProductDetail
 	public ProductDTO getProductDetail(ProductDTO productDTO) throws Exception {
-		Connection connection = DBConnection.getConnection();
-		String sql = "SELECT * FROM PRODUCT WHERE PRODUCTNUM=?";
-		PreparedStatement st = connection.prepareStatement(sql);
-		st.setLong(1, productDTO.getProductNum());
-		ResultSet rs = st.executeQuery();
-		if(rs.next()) {
-			productDTO = new ProductDTO();
-			//새로운 productDTO객체 생성
-			productDTO.setProductNum(rs.getLong("PRODUCTNUM"));
-			productDTO.setProductName(rs.getString("PRODUCTNAME"));
-			productDTO.setProductDetail(rs.getString("PRODUCTDETAIL"));
-			productDTO.setProductJumsu(rs.getDouble("PRODUCTJUMSU"));
-		} else {
-			productDTO = null;
-		}
-		return productDTO;
+		
+		//결과값이 1개 또는 0개 나오므로 selectOne 메소드
+		//proudctNum을 보내줘야 하므로 productDTO 전체 보내주자(mybatis가 알아서 처리)
+		return sqlSession.selectOne(NAMESPACE+"getProductDetail", productDTO);
 	}
 
 	
-	public int setaddProduct(ProductDTO productDTO) throws Exception {
-		Connection connection = DBConnection.getConnection();
-		String sql = "INSERT INTO PRODUCT (PRODUCTNUM, PRODUCTNAME, PRODUCTDETAIL, PRODUCTJUMSU)"
-				+ " VALUES (?,?,?,0.0)";
-		PreparedStatement st = connection.prepareStatement(sql);
-		st.setLong(1, productDTO.getProductNum());
-		st.setString(2, productDTO.getProductName());
-		st.setString(3, productDTO.getProductDetail());
-		int result = st.executeUpdate();
-		DBConnection.disConnection(st, connection);
-		return result;
+	public int setAddProduct(ProductDTO productDTO) throws Exception {
+		
+		return sqlSession.insert(NAMESPACE+"setAddProduct", productDTO);
 	}
 
 	

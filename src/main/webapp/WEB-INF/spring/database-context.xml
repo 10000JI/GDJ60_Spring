@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- mybatis 사용하기 위해 객체 생성 -->
+	<!-- 그냥 호출시 default 생성자로 객체 만듦 -->
+	
+	<!-- Connection 객체 생성-->
+	<!-- 부모 SqlSession로 주입해야함 -->
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+		<property name="username" value="user01"></property>
+		<property name="password" value="user01"></property>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521/xe"></property>
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+	</bean>
+	
+	<!-- dataSource이름으로 만든 객체(Connection)와 그외 나머지(sql,PreperanceStateMent,ResultSet 등등..)이 존재하는 OOOOMapper.xml 연결 객체-->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="mapperLocations" value="classpath:database/mappers/*Mapper.xml"></property>
+	</bean>
+	
+	<!-- 위 합친 것을 실행할 수 있는 객체 생성 -->
+	<!-- 해당 객체는 default생성자가 없다. 따로 default생성자 만드는 코드 작성  -->
+	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"></constructor-arg>
+	</bean>
+</beans>
