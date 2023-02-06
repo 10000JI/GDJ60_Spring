@@ -10,5 +10,8 @@
   		<typeAlias type="com.iu.s1.product.ProductDTO" alias="ProductDTO"/>
   		
   		<typeAlias type="java.lang.Long" alias="Long"/>
+  		
+  		<typeAlias type="com.iu.s1.member.MemberDTO" alias="memberDTO"/>
+  		
   	</typeAliases>
   </configuration>

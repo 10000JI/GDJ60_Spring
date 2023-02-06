@@ -13,7 +13,7 @@
 
 <!-- 절대경로 -->
 <a href="/product/list">ProductList</a>
-
+<a href="/member/list">ProductMember</a>
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>
