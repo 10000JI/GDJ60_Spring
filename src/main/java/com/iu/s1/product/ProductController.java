@@ -72,15 +72,15 @@ public class ProductController {
 	
 	//getProductAdd
 	@RequestMapping(value="productAdd", method = RequestMethod.GET)
-	public void ProductAdd() {
+	public void setProductAdd() {
 		//메소드는 Get
 	}
 	
 	@RequestMapping(value="productAdd", method = RequestMethod.POST)
-	public String ProductAdd(ProductDTO productDTO) throws Exception {
+	public String setProductAdd(ProductDTO productDTO) throws Exception {
 		//productAdd.jsp에서 등록했을 때 넘어가는 메소드
 		//등록할때는 메소드는 Post로 받을 것이다. (서버내에서 실행)
-		int result = productService.setAddProduct(productDTO, null);
+		int result = productService.setProductAdd(productDTO, null);
 		System.out.println(result == 1);
 		//상대주소
 		return "redirect:./list";

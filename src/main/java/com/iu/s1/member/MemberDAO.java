@@ -28,16 +28,5 @@ public class MemberDAO {
 		
 		return sqlSession.selectList(NAMESPACE+"getMemberList");
 	}
-	
-//	public static void main(String[] args) throws Exception {
-//		MemberDTO memberDTO = new MemberDTO();
-//		MemberDAO memberDAO = new MemberDAO();
-//		memberDTO.setId("id1");
-//		memberDTO.setPw("pw1");
-//		memberDTO.setName("name1");
-//		memberDTO.setPhone("phone1");
-//		memberDTO.setEmail("Email1");
-//		int a =memberDAO.setaddMember(memberDTO);
-//		System.out.println(a == 1);
-//	}
+
 }

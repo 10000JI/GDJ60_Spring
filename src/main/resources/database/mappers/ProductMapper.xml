@@ -22,7 +22,7 @@
   	</select>
   	
   	<!-- DDL구문은 resultType 써주지 않아도 됨 -->
-  	<insert id="setAddProduct" parameterType="ProductDTO" >
+  	<insert id="setProductAdd" parameterType="ProductDTO" >
   		INSERT INTO PRODUCT
 		VALUES (#{productNum},#{productName},#{productDetail},0.0)
 	</insert>
@@ -33,5 +33,8 @@
 		DELETE PRODUCT WHERE PRODUCTNUM=#{productNum}
 	</delete>
 	
+	<select id="getProductNum" resultType="Long">
+		SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL
+	</select>
 	
   </mapper>

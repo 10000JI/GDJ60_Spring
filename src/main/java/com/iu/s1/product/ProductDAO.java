@@ -31,16 +31,8 @@ public class ProductDAO {
 	
 	//getMax
 	public Long getProductNum() throws Exception {
-		Connection connection = DBConnection.getConnection();
-		String sql = "SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL";
-		PreparedStatement st = connection.prepareStatement(sql);
-		ResultSet rs = st.executeQuery();
-		//데이터가 없어도 MAX가 0이어서 값이 무조건 나옴
-		rs.next();
-		Long num = rs.getLong(1);
-		//=rs.getLong(1);
-		DBConnection.disConnection(rs, st, connection);
-		return num;
+		
+		return sqlSession.selectOne(NAMESPACE+"getProductNum");
 	}
 	
 //---------------------------------------------------------------------------
@@ -93,8 +85,8 @@ public class ProductDAO {
 	}
 
 //setAddProduct
-	public int setAddProduct(ProductDTO productDTO) throws Exception {
+	public int setProductAdd(ProductDTO productDTO) throws Exception {
 		
-		return sqlSession.insert(NAMESPACE+"setAddProduct", productDTO);
+		return sqlSession.insert(NAMESPACE+"setProductAdd", productDTO);
 	}
 }

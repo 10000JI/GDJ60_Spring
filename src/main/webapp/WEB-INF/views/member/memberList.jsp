@@ -16,7 +16,7 @@
 			<thead>
 				<tr>
 					<th>아이디</th>
-					<th>비밀번호</th>
+					<th>이름</th>
 					<th>핸드폰번호</th>
 					<th>이메일</th>
 				</tr>
