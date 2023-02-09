@@ -51,7 +51,7 @@ public class BankBookDAOTest extends MyTestCase {
 		BankBookDTO bankBookDTO = new BankBookDTO();
 		bankBookDTO.setBookNum(1L);
 		bankBookDTO.setBookName("나라사랑");
-		bankBookDTO.setBookDetail("나라사랑통장!!");
+		bankBookDTO.setBookDetail("나라사랑통장????");
 		bankBookDTO.setBookRate(2.0);
 		bankBookDTO.setBookSale(1);
 		int a  = bankBookDAO.setBankBookUpdate(bankBookDTO);
