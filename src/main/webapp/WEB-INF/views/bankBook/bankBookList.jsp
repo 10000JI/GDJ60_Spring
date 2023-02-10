@@ -14,7 +14,7 @@
 		<img alt="" src="../resources/images/iu.jpg">
 	</div>
 
-	<table class="tb" border = 1>
+	<table class="tbl2">
 		<thead>
 			<tr>
 				<th>상품명</th>
@@ -29,8 +29,8 @@
 					<!-- ${pageScope.dto.bookName}=${dto.bookName} -->
 					<!-- ?이후는 파라미터임을 명시 -->
 					<td><a href="./detail?bookNum=${dto.bookNum}">${dto.bookName}</a></td>
-					<td>${dto.bookRate}</td>
-					<td>
+					<td class="tbl_td">${dto.bookRate}</td>
+					<td class="tbl_td">
 						<!-- Switch case 문 -->
 						<c:choose>
 							<c:when test="${dto.bookSale eq 1}">판매중</c:when>
@@ -38,7 +38,8 @@
 						</c:choose>
 					
 <%-- 						<c:if test="${dto.bookSale eq 1}">판매중</c:if>
-						<c:if test="${dto.bookSale eq 0}">판매중단</c:if> --%>
+						<c:if test="${dto.bookSale eq 0}">판매중단</c:if> 
+--%>
 					</td>
 				</tr>
 			</c:forEach>

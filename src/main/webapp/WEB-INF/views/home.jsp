@@ -4,24 +4,34 @@
 <html>
 <head>
 	<title>Home</title>
+	<link rel="stylesheet" href="./resources/css/reset.css">
 	<link rel="stylesheet" href="./resources/css/main.css">
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<!-- 상대경로 -->
-
-<!-- 절대경로 -->
-<a class="c1" href="/product/list">ProductList</a>
-<a class="c1" href="/member/list">ProductMemberList</a>
-<a class="c1" href="/bankBook/list">BankBookList</a>
-<a class="c1" href="./bankBook/list">BankBookList</a>
-<P>  The time on the server is ${serverTime}. </P>
-
-<img alt="아이유이미지?" src="/resources/images/iu.jpg">
-<img alt="아이유이미지!" src="./resources/images/iu2.jpg">
-
+	<header>
+		<div class="header_wrap">
+			<div class="header_logo">
+				<img src="/resources/images/logo.png" alt="">
+			</div>
+			<nav class="header_nav">
+				<ul>
+					<li><a href="#">공지사항</a></li>
+					<li><a href="#">제품</a></li>
+					<li><a href="#">저축상품</a></li>
+					<li><a href="#">기타메뉴</a></li>
+				</ul>
+			</nav>
+			<div class="header_sub">
+				<ul>
+					<li><a href="#">Login</a></li>
+					<li><a href="#">JOIN</a></li>
+					<li><a href="#">KO</a></li>
+					<li><a href="#">EN</a></li>
+					<li><a href="#">JP</a></li>
+					<li><a href="#">CN</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
 </body>
 </html>
