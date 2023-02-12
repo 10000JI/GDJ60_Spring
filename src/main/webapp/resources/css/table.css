@@ -21,31 +21,20 @@
     text-decoration: none;
 }
 
+.tbl_td{
+    width:15%;
+    text-align: center;
+}
+
 .title{
     width: 30%;
     margin: 0 auto;
 }
 
 .image{
-	width: 50%;
-    margin: 0 auto;
-}
-
-.pr{
     width: 50%;
     margin: 0 auto;
 }
-
-.prtd{
-    width: 50%;
-    margin: 0 auto;
-}
-
-.tbl_td{
-    width:15%;
-    text-align: center;
-}
-
 
 /*******************************/
 
