@@ -5,24 +5,48 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../resources/css/reset.css">
-<link rel="stylesheet" href="../resources/css/main.css">
-<link rel="" href="">
+<title>회원가입</title>
+<c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-	<h1>MemberJoin Page</h1>
-	<div class = "col-6">
-		<form action="./memberJoin" method="post">
-		아이디: <input type="text" name="id" values=""> <br> <br>
-		비밀번호: <input type="text" name="pw" values=""> <br> <br>
-		이름: <input type="text" name="name" values=""> <br> <br>
-		전화번호: <input type="text" name="phone" values=""> <br> <br>
-		이메일: <input type="text" name="email" values=""> <br> <br>
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<h1 class="col-md-6 text-center">MemberJoin Page</h1>
+	</div>
+	<div class = "row justify-content-center">
+		<form class="col-md-6" action="./memberJoin" method="post">
+		<div class="mb-3">
+			<label for="bookName" class="form-label">아이디</label> 
+			<input type="text" name="id" class="form-control" id="id" placeholder="아이디 입력">
+		</div>
 		
-		<Button type="submit">등록</Button>
+		<div class="mb-3">
+			<label for="pw" class="form-label">비밀번호</label> 
+			<input type="password" name="pw" class="form-control" id="pw" placeholder="비밀번호 입력">
+		</div>
+		
+		<div class="mb-3">
+			<label for="name" class="form-label">아이디</label> 
+			<input type="text" name="name" class="form-control" id="name" placeholder="이름 입력">
+		</div>
+		
+		<div class="mb-3">
+			<label for="phone" class="form-label">전화번호</label> 
+			<input type="tel" name="phone" class="form-control" id="phone" placeholder="010-OOOO-OOOO">
+		</div>
+		
+		<div class="mb-3">
+			<label for="email" class="form-label">이메일</label> 
+			<input type="email" name="email" class="form-control" id="email" placeholder="example@gmail.com">
+		</div>
+
+		
+		<div class="mb-3">
+				<button class="btn btn-outline-success" type="submit">등록</button> 
+		</div>
 		</form>
 	</div>
+</div>
 </body>
 </html>
