@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>저축상품</title>
 <c:import url="../template/common_css.jsp"></c:import>
 <link rel="stylesheet" href="../resources/css/table.css">
 </head>
