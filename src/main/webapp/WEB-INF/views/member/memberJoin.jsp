@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../resources/css/reset.css">
+<link rel="stylesheet" href="../resources/css/main.css">
+<link rel="" href="">
 </head>
 <body>
+<c:import url="../template/header.jsp"></c:import>
 	<h1>MemberJoin Page</h1>
 	<div class = "col-6">
 		<form action="./memberJoin" method="post">

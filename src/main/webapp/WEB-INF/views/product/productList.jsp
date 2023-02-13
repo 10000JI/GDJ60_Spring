@@ -8,24 +8,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<c:import url="../template/common_css.jsp"></c:import>
 <link rel="stylesheet" href="../resources/css/table.css">
 </head>
 <body>
+	<c:import url="../template/header.jsp"></c:import>
 
-	<h1 class="pr">ProductList Page</h1>
-	<% 
-		List<ProductDTO> ar = (List<ProductDTO>)request.getAttribute("list");
+	<h1 class="title">ProductList Page</h1>
 	
-		 for(ProductDTO pro:ar){
-	%>
-		<h3><%=pro.getProductName() %></h3>
-		<h3><%=pro.getProductJumsu() %></h3>
-
-	<%}%>
-	
-	<hr>
-	
-
 	<table class="tbl2">
 		<thead>
 			<tr>
