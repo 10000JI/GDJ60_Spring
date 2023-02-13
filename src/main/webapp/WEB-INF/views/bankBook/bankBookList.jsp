@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>저축상품</title>
 <c:import url="../template/common_css.jsp"></c:import>
-<link rel="stylesheet" href="../resources/css/table.css">
+
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
@@ -17,7 +17,7 @@
 		<img alt="" src="../resources/images/iu.jpg">
 	</div>
 
-	<table class="tbl2">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>상품명</th>
@@ -49,6 +49,7 @@
 		</tbody>
 	</table>
 	<!-- URL 요청하면 DS가 Controller로 이동 -->
-	<a href="./add">상품등록</a>
+	<a href="./add" class="btn btn-primary">상품등록</a>
+	<c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>
