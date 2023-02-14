@@ -5,14 +5,18 @@
 
 <mapper namespace="com.iu.s1.member.MemberDAO">
 
-<insert id="setMemberJoin" parameterType="MemberDTO" >
-	INSERT INTO BANKMEMBERS
-	VALUES (#{id},#{pw},#{name},#{phone},#{email})
-</insert>
-
-<select id="getMemberList" resultType="MemberDTO" >
-	SELECT * FROM BANKMEMBERS
-</select>
-
+	<insert id="setMemberJoin" parameterType="MemberDTO" >
+		INSERT INTO BANKMEMBERS
+		VALUES (#{id},#{pw},#{name},#{phone},#{email})
+	</insert>
+	
+	<select id="getMemberList" resultType="MemberDTO" >
+		SELECT * FROM BANKMEMBERS
+	</select>
+	
+	<insert id="" parameterType="MemberDTO">
+		INSERT INTO MEMBER_ROLE (ID,ROLENUM)
+		VALUES(#{id},(SELECT ROLENUM FROM ROLE WHERE ROLENAME='MEMBER'))
+	</insert>
 
 </mapper>

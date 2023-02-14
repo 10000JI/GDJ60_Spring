@@ -10,18 +10,20 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-<div class="container-fluid my-7">
+<div class="container-fluid my-5">
 	<div class="row justify-content-center">
-		<h1 class="col-md-7 text-center">BankBook Detail Page</h1>
+		<h1 class="col-md-8 text-center">BankBook Detail Page</h1>
 	</div>
-	<div class="row justify-content-center">
+	<div class="row justify-content-center ">
 		<div class="col-md-7">
 			<c:if test="${not empty dto.bookNum }">	
-				<h3>Num : ${dto.bookNum}</h3>
-				<h3>Title : ${dto.bookName}</h3>
-				<h3>Detail : ${dto.bookDetail}</h3>
-				<h3>Rate : ${dto.bookRate}</h3>
-				<h3>Sale : ${dto.bookSale}</h3>
+				<div class="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+					<h3>Num : ${dto.bookNum}</h3>
+					<h3>Title : ${dto.bookName}</h3>
+					<h3>Detail : ${dto.bookDetail}</h3>
+					<h3>Rate : ${dto.bookRate}</h3>
+					<h3>Sale : ${dto.bookSale}</h3>
+				</div>
 				<a href="./delete?bookNum=${dto.bookNum}">상품삭제</a> 
 			</c:if>
 			<c:if test="${empty dto.bookNum}">	
