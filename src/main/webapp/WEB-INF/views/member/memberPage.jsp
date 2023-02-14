@@ -10,9 +10,9 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-	<div class="container-fluid">
-		<div class="row">
-			<h1>Member Page</h1>
+	<div class="container-fluid my-5">
+		<div class="row justify-content-center">
+			<h1 class="col text-center fw-bold">Member Page</h1>
 		</div>
 		
 		<div class="row">

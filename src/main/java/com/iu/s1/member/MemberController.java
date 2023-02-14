@@ -77,8 +77,10 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="memberUpdate", method = RequestMethod.POST)
-	public ModelAndView setMemberUpdate(MemberDTO memberDTO,ModelAndView mv) throws Exception{
+	public ModelAndView setMemberUpdate(MemberDTO memberDTO,HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
 		int result = memberService.setMemberUpdate(memberDTO);
+		session.setAttribute("member", memberDTO);
 		mv.setViewName("redirect:./memberPage");
 		return mv;
 	}
