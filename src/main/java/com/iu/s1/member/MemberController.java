@@ -35,4 +35,17 @@ public class MemberController {
 		System.out.println(result==1);
 		return "redirect:./list";
 	}
+	
+	@RequestMapping(value = "memberLogin", method=RequestMethod.GET)
+	public void setMemberLogin() {
+		
+	}
+	
+	@RequestMapping(value = "memberLogin", method=RequestMethod.POST)
+	public ModelAndView getMemberLogin(MemberDTO memberDTO, ModelAndView mv) throws Exception {
+		memberDTO = memberService.getMemberLoin(memberDTO);
+		System.out.println(memberDTO!=null);
+		mv.setViewName("redirect:./list");
+		return mv;
+	}
 }
