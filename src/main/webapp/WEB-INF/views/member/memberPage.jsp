@@ -11,15 +11,15 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 	<div class="container-fluid my-5">
-		<div class="row justify-content-center">
+		<div class="row mb-4 justify-content-center">
 			<h1 class="col text-center fw-bold">Member Page</h1>
 		</div>
 		
-		<div class="row">
-			<h3>Name : ${member.name}</h3>
-			<h3>Phone : ${member.phone}</h3>
-			<h3>Email : ${member.email}</h3>
-			<a href="./memberUpdate" class="btn btn-info"> 정보수정</a>
+		<div class="row justify-content-center">
+			<div class="col-12 text-center fw-bold fs-4">Name : ${member.name}</div>
+			<div class="col-12 text-center fw-bold fs-4">Phone : ${member.phone}</div>
+			<div class="col-12 text-center fw-bold fs-4">Email : ${member.email}</div>
+			<a href="./memberUpdate" class="btn btn-info col-12"> 정보수정</a>
 		</div>
 	</div>
 <c:import url="../template/common_js.jsp"></c:import>
