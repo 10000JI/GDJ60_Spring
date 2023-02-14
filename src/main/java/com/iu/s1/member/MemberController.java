@@ -78,9 +78,21 @@ public class MemberController {
 	
 	@RequestMapping(value="memberUpdate", method = RequestMethod.POST)
 	public ModelAndView setMemberUpdate(MemberDTO memberDTO,HttpSession session) throws Exception{
+		//방법1)
+		//jsp에서 input 태그 hidden으로 보내면 클라이언트가 조작가능하다
+		//따라서 Session으로 id값을 보내준다
+		//방법2)
+		//지금까지 세션을 가지고 사용했다면, id값만 가져오는 select문을 사용하여 
+		//다시 조회해서 뿌려준다 (로그인할때, 나의 페이지로 갈때 등 (업데이트는 제외))
+		//복잡하긴 해도 메모리 영역에 select한 정보를 모두 가져오면 과부하 일으키므로 이 방법이 더 효과적이다 
 		ModelAndView mv = new ModelAndView();
+		MemberDTO sessionDto= (MemberDTO)session.getAttribute("member");
+		memberDTO.setId(sessionDto.getId());
+		//위는 수정 전 dto이기 때문에 새롭게 dto 선언, Object타입을 형변환
 		int result = memberService.setMemberUpdate(memberDTO);
-		session.setAttribute("member", memberDTO);
+		if(result>0) {			
+			session.setAttribute("member", memberDTO);
+		}
 		mv.setViewName("redirect:./memberPage");
 		return mv;
 	}

@@ -17,7 +17,7 @@
 		
 		<div class="row">
 			<form action="./memberUpdate" method="post">
-				<input type="hidden" name="id" value="${member.id}">
+				
 				
 				<div class="mb-3">
 					<label for="name" class="form-label fw-bold">이름</label> 
