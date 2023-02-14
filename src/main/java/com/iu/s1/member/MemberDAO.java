@@ -37,5 +37,9 @@ public class MemberDAO {
 		
 		return sqlSession.selectOne(NAMESPACE+"getMemberLoin",memberDTO);
 	}
+	
+	public int setMemberUpdate(MemberDTO memberDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setMemberUpdate", memberDTO);
+	}
 
 }

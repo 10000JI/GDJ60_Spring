@@ -23,4 +23,16 @@ public class MemberDAOTest extends MyTestCase {
 		int a = memberDAO.setMemberJoin(memberDTO);
 		assertEquals(1, a);
 	}
+	
+	@Test
+	public void setMemberUpdateTest() throws Exception{
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setId("MINJI");
+		memberDTO.setPw("1235");
+		memberDTO.setName("MINJI");
+		memberDTO.setPhone("010-1111-9898");
+		memberDTO.setEmail("MINJI@gmail.com");
+		int a = memberDAO.setMemberUpdate(memberDTO);
+		assertEquals(1, a);
+	}
 }
