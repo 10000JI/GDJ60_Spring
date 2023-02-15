@@ -42,8 +42,8 @@ public class BankBookDAOTest extends MyTestCase {
 			bankBookDTO.setBookDetail("book");
 			bankBookDTO.setBookSale(1);
 			a = bankBookDAO.setBankBookAdd(bankBookDTO);
+			assertEquals(1, a);
 		}
-		assertEquals(1, a);
 	}
 	
 	@Test

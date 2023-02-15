@@ -49,11 +49,28 @@
 			</tbody>
 		</table>
 		
-		<div>
+		<div class="row">
+			<nav aria-label="Page navigation example">
+			  <ul class="pagination">
+			    <li class="page-item">
+			      <a class="page-link" href="#" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+			    </li>
+			    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+			    	<li class="page-item"><a class="page-link" href="./list?page=${i}">${i}</a></li>
+				</c:forEach>
+				
+			    <li class="page-item">
+			      <a class="page-link" href="#" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			      </a>
+			    </li>
+			  </ul>
+			</nav>
+		
 			<!-- for(int i=1;i<=??;i++){i} -->
-			<c:forEach begin="1" end="${pager.totalCount div 10}" step="1" var="i">
-				<a href="./list?page=${i}">${i}</a>
-			</c:forEach>
+			
 		</div>
 		
 		<!-- URL 요청하면 DS가 Controller로 이동 -->
