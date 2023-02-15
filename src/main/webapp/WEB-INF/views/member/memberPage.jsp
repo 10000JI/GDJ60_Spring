@@ -16,9 +16,9 @@
 		</div>
 		
 		<div class="row justify-content-center">
-			<div class="col-12 text-center fw-bold fs-4">Name : ${member.name}</div>
-			<div class="col-12 text-center fw-bold fs-4">Phone : ${member.phone}</div>
-			<div class="col-12 text-center fw-bold fs-4">Email : ${member.email}</div>
+			<div class="col-12 text-center fw-bold fs-4">Name : ${dto.name}</div>
+			<div class="col-12 text-center fw-bold fs-4">Phone : ${dto.phone}</div>
+			<div class="col-12 text-center fw-bold fs-4">Email : ${dto.email}</div>
 			<a href="./memberUpdate" class="btn btn-info col-12"> 정보수정</a>
 		</div>
 	</div>

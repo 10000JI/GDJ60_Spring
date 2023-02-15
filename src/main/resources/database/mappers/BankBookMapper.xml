@@ -5,8 +5,16 @@
   
  <mapper namespace="com.iu.s1.bankBook.BankBookDAO">
  
- 	<select id="getBankBookList" resultType="BankBookDTO">
- 		SELECT * FROM BANKBOOK ORDER BY BOOKNUM DESC
+ 	<select id="getBankBookList" parameterType="Pager" resultType="BankBookDTO">
+ 		SELECT * FROM
+		(
+			SELECT ROWNUM R, B.* FROM
+			(
+				SELECT * FROM BANKBOOK
+				ORDER BY BOOKNUM DESC
+			) B
+		)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
  	<select id="getBankBookDetail" parameterType="BankBookDTO" resultType="BankBookDTO">

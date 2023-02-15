@@ -21,17 +21,17 @@
 				
 				<div class="mb-3">
 					<label for="name" class="form-label fw-bold">이름</label> 
-					<input type="text" name="name" class="form-control" id="name" value="${member.name}">
+					<input type="text" name="name" class="form-control" id="name" value="${dto.name}">
 				</div>
 			
 				<div class="mb-3">
 					<label for="phone" class="form-label fw-bold">전화번호</label> 
-					<input type="tel" name="phone" class="form-control" id="phone" value="${member.phone}">
+					<input type="tel" name="phone" class="form-control" id="phone" value="${dto.phone}">
 				</div>
 				
 				<div class="mb-3">
 					<label for="email" class="form-label fw-bold ">이메일</label> 
-					<input type="email" name="email" class="form-control" id="email" value="${member.email}">
+					<input type="email" name="email" class="form-control" id="email" value="${dto.email}">
 				</div>
 				
 				<div class="mb-3">
