@@ -21,9 +21,15 @@ public class BankBookController {
 	@RequestMapping(value = "list", method=RequestMethod.GET)
 	public ModelAndView getbankBookList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		System.out.println("Service 전: "+pager.getTotalCount());
+		
 		List<BankBookDTO> ar= bankBookService.getBankBookList(pager);
+		
+		System.out.println("Service 후: "+pager.getTotalCount());
+		
 		mv.setViewName("bankBook/bankBookList");
 		mv.addObject("list", ar);
+		mv.addObject("paper", pager);
 		return mv;
 	}
 	

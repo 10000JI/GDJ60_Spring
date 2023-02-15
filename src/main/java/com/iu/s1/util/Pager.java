@@ -12,6 +12,18 @@ public class Pager {
 	//테이블에서 조회 할 끝번호
 	private Long lastRow;
 
+	//전체 row의 갯수를 담을 변수
+	private Long totalCount;
+	
+	
+	public Long getTotalCount() {
+		return totalCount;
+	}
+
+	public void setTotalCount(Long totalCount) {
+		this.totalCount = totalCount;
+	}
+
 	public Pager() {
 		this.perPage=10L;
 	}

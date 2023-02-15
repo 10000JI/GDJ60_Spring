@@ -48,6 +48,14 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		
+		<div>
+			<!-- for(int i=1;i<=??;i++){i} -->
+			<c:forEach begin="1" end="${pager.totalCount div 10}" step="1" var="i">
+				<a href="./list?page=${i}">${i}</a>
+			</c:forEach>
+		</div>
+		
 		<!-- URL 요청하면 DS가 Controller로 이동 -->
 	</div>
 	<div class="row col-md-7 mx-auto">
