@@ -15,10 +15,29 @@ public class Pager {
 	private Long startNum;
 	private Long lastNum;
 	
+	private boolean before;
+	private boolean after;
+	
 	public Pager() {
 		this.perPage=10L;
 	}
 	
+	public boolean isAfter() {
+		return after;
+	}
+
+	public void setAfter(boolean after) {
+		this.after = after;
+	}
+
+	public boolean isBefore() {
+		return before;
+	}
+
+	public void setBefore(boolean before) {
+		this.before = before;
+	}
+
 	public Long getStartNum() {
 		return startNum;
 	}
@@ -44,6 +63,7 @@ public class Pager {
 	
 	//startNum, lastNum
 	public void makeNum(Long totalCount) {
+		
 		//1. 전체 row의 갯수 구하기
 		//2. 총 page의 갯수 구하기
 		//ex> totalCount가 135 getPerPage가 10이면 14개 페이지
@@ -52,6 +72,10 @@ public class Pager {
 			//totalPage = totalPage+1;
 			//totalPage+=1;
 			totalPage++;
+		}
+		if(this.getPage()>totalPage) {
+			this.setPage(totalPage);
+			
 		}
 		//3. 한 블럭에 출력할 번호의 갯수
 		//1-5페이지
@@ -82,6 +106,16 @@ public class Pager {
 		 */	
 		this.startNum=(curBlock-1)*(perBlock)+1;
 		this.lastNum= perBlock*curBlock;
+		
+		this.after=true;
+		if(curBlock==totalBlock) {
+			lastNum=totalPage;
+			this.after=false;
+		}
+		
+		if(curBlock==1) {
+			this.before=true;
+		}
 	}
 	
 	public Long getPerPage() {
