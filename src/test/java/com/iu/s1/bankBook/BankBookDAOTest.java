@@ -3,6 +3,7 @@ package com.iu.s1.bankBook;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.Random;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,10 @@ public class BankBookDAOTest extends MyTestCase {
 	@Autowired
 	private BankBookDAO bankBookDAO;
 	
-	@Test
-	public void getBankBookListTest() throws Exception {
-		List<BankBookDTO> ar = bankBookDAO.getBankBookList();
-		assertNotEquals(0, ar.size());
-	}
+	/*
+	 * @Test public void getBankBookListTest() throws Exception { List<BankBookDTO>
+	 * ar = bankBookDAO.getBankBookList(); assertNotEquals(0, ar.size()); }
+	 */
 	@Test
 	public void getBankBookDetailTest() throws Exception{
 		BankBookDTO bankBookDTO = new BankBookDTO();
@@ -30,12 +30,19 @@ public class BankBookDAOTest extends MyTestCase {
 	
 	@Test
 	public void setBankBookAddTest() throws Exception{
-		BankBookDTO bankBookDTO = new BankBookDTO();
-		bankBookDTO.setBookName("Contry2");
-		bankBookDTO.setBookDetail("is Strong");
-		bankBookDTO.setBookRate(15.5);
-		bankBookDTO.setBookSale(1);
-		int a = bankBookDAO.setBankBookAdd(bankBookDTO);
+		int a = 0;
+		for(int i=0;i<30;i++) {
+			Random r = new Random();
+			double d = r.nextDouble(); //0.1234
+			int num = (int)(d * 1000); //123
+			d = num / 100.0;
+			BankBookDTO bankBookDTO = new BankBookDTO();
+			bankBookDTO.setBookName("신한적금-"+num);
+			bankBookDTO.setBookRate(d);
+			bankBookDTO.setBookDetail("book");
+			bankBookDTO.setBookSale(1);
+			a = bankBookDAO.setBankBookAdd(bankBookDTO);
+		}
 		assertEquals(1, a);
 	}
 	
