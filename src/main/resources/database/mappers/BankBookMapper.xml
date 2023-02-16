@@ -4,9 +4,46 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="com.iu.s1.bankBook.BankBookDAO">
- 
- 	<select id="getBankBookList" resultType="BankBookDTO">
- 		SELECT * FROM BANKBOOK ORDER BY BOOKNUM DESC
+ 	<sql id="searchCondition">
+ 		<if test="kind == 'contents'">
+ 			WHERE BOOKDETAIL LIKE '%' || #{search} || '%'
+ 		</if>
+ 		
+ 		<if test="kind == 'title'">
+ 			WHERE BOOKNAME LIKE '%' || #{search} || '%'
+ 		</if>
+ 	</sql>
+ 	
+ 	<sql id="searchCondition2">
+ 		WHERE 
+			<choose>
+				<when test="kind == 'contents'">
+					BOOKDETAIL
+				</when>
+				<otherwise>
+					BOOKNAME
+				</otherwise>
+			</choose>	
+		LIKE '%' || #{search} || '%'
+ 	</sql>
+ 	
+ 	
+ 	<select id="getBankBookCount" parameterType="Pager" resultType="Long">
+ 		SELECT COUNT(BOOKNUM) FROM BANKBOOK
+ 		<include refid="searchCondition"></include>
+ 	</select>
+ 	
+ 	<select id="getBankBookList" parameterType="Pager" resultType="BankBookDTO">
+ 		SELECT * FROM
+		(
+			SELECT ROWNUM R, B.* FROM
+			(
+				SELECT * FROM BANKBOOK
+				<include refid="searchCondition2"></include>				
+				ORDER BY BOOKNUM DESC
+			) B
+		)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
  	<select id="getBankBookDetail" parameterType="BankBookDTO" resultType="BankBookDTO">
@@ -15,7 +52,7 @@
 
  	<insert id="setBankBookAdd" parameterType="BankBookDTO">
  		INSERT INTO BANKBOOK 
- 		VALUES (PRODUCT_SEQ.NEXTVAL,#{bookName},#{bookDetail},#{bookRate},#{bookSale})
+ 		VALUES (BKBOOK_SEQ.NEXTVAL,#{bookName},#{bookDetail},#{bookRate},#{bookSale})
  	</insert>
  
  	<delete id="setBankBookDelete" parameterType="BankBookDTO">

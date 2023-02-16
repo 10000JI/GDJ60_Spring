@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.s1.util.Pager;
+
 @Controller
 @RequestMapping("/product/*")
 public class ProductController {
@@ -21,8 +23,8 @@ public class ProductController {
 	//의존성 주입
 	private ProductService productService;
 	
-	@RequestMapping(value="list")
-	public ModelAndView getProductList(ModelAndView mv) throws Exception  {
+	@RequestMapping(value="list", method=RequestMethod.GET)
+	public ModelAndView getProductList(ModelAndView mv, Pager pager) throws Exception  {
 		//모델에 담는 방법 (request 대신)
 		//1. 매개변수를 모델에 담음
 		//2. 모델과 뷰가 합쳐서 보냄
@@ -33,10 +35,11 @@ public class ProductController {
 		//같은 참조변수의 값이 다른게 여러개가 파라미터를 받아야된다면 매개변수에 배열로 받는다
 		//Spring에서 대신 해준다.
 		
-		List<ProductDTO> ar  = productService.getProductList();
+		List<ProductDTO> ar  = productService.getProductList(pager);
 		System.out.println(ar.size()>0);
 		mv.setViewName("product/productList");
 		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
 		return mv;
 	}
 	

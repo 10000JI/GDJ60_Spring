@@ -17,5 +17,7 @@
   		
   		<typeAlias type="com.iu.s1.bankBook.BankBookDTO" alias="BankBookDTO"></typeAlias>
   		
+  		<typeAlias type="com.iu.s1.util.Pager" alias="Pager"></typeAlias>
+  		
   	</typeAliases>
   </configuration>
