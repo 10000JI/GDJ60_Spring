@@ -17,7 +17,7 @@
 	</div>	
 	
 	<div class="row justify-content-center">
-		<form class="col-md-7" action="./add" method="post">
+		<form class="col-md-7" action="./add" method="post" enctype="multipart/form-data">
 			<div class="mb-3">
 				<label for="bookName" class="form-label">제품명</label> 
 				<input type="text" name="bookName" class="form-control" id="bookName" placeholder="제품명 입력">
