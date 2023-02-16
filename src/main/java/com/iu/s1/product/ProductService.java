@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.iu.s1.util.Pager;
+
 @Service
 //Service객체 생성
 public class ProductService {
@@ -19,9 +21,13 @@ public class ProductService {
 		return productDAO.getProductDetail(productDTO);
 	}
 
-	public List<ProductDTO> getProductList() throws Exception{
+	public List<ProductDTO> getProductList(Pager pager) throws Exception{
 		//ProductService를 통해 DAO 통해 DB 도착 (중간과정 써줌)
-		return productDAO.getProductList();
+		Long totalCount = productDAO.getProductCount(pager);
+		pager.makeNum(totalCount);
+		pager.makeRow();
+		
+		return productDAO.getProductList(pager);
 	}
 	
 	public int setProductAdd (ProductDTO productDTO, List<ProductOptionDTO> ar) throws Exception {

@@ -9,6 +9,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import com.iu.s1.util.DBConnection;
+import com.iu.s1.util.Pager;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -23,6 +24,16 @@ public class ProductDAO {
 	//어느 Mapper를 쓸 것인지 명시
 	//변수명은 Mapper의 namespace와 동일하게 + . 
 	private final String NAMESPACE = "com.iu.s1.product.ProductDAO.";
+	
+	public Long getProductCount(Pager pager) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getProductCount", pager);
+	}
+	
+	//product
+	public List<ProductDTO> getProductList(Pager pager) throws Exception{
+		
+		return sqlSession.selectList(NAMESPACE+"getProductList",pager);
+	}
 	
 	//delete
 	public int setProductDelete(Long productNum) throws Exception {
@@ -70,11 +81,6 @@ public class ProductDAO {
 		return result;
 	}
 //-------------------------------------------------------------------------------------
-//product
-	public List<ProductDTO> getProductList() throws Exception{
-		
-		return sqlSession.selectList(NAMESPACE+"getProductList");
-	}
 	
 //getProductDetail
 	public ProductDTO getProductDetail(ProductDTO productDTO) throws Exception {

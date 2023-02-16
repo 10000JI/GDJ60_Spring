@@ -37,7 +37,7 @@ public class BankBookDAOTest extends MyTestCase {
 			int num = (int)(d * 1000); //123
 			d = num / 100.0;
 			BankBookDTO bankBookDTO = new BankBookDTO();
-			bankBookDTO.setBookName("신한적금-"+num);
+			bankBookDTO.setBookName("농협적금-"+num);
 			bankBookDTO.setBookRate(d);
 			bankBookDTO.setBookDetail("book");
 			bankBookDTO.setBookSale(1);

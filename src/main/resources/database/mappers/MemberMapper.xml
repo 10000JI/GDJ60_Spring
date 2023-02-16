@@ -5,6 +5,7 @@
 
 <mapper namespace="com.iu.s1.member.MemberDAO">
 
+		
 	<insert id="setMemberJoin" parameterType="MemberDTO" >
 		INSERT INTO BANKMEMBERS
 		VALUES (#{id},#{pw},#{name},#{phone},#{email})
