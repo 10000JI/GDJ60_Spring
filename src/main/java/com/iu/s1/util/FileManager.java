@@ -5,13 +5,14 @@ import java.util.Calendar;
 import java.util.UUID;
 
 import org.springframework.stereotype.Component;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class FileManager {
 	
 	//File을 HDD에 저장
-	public void fileSave(MultipartFile multipartFile, String path) throws Exception {
+	public String fileSave(MultipartFile multipartFile, String path) throws Exception {
 		//1. 어디에 저장할 것인가?
 		//	/resources/upload/bankBook/...
 		//2. 저장관리는 운영체제가 담당
@@ -37,6 +38,11 @@ public class FileManager {
 		file = new File(file, name);
 		
 		//1) multiFile객체의 transferTo메서드 사용
-		multipartFile.transferTo(file);
+		//multipartFile.transferTo(file);
+		
+		//2) Spring API FileCopyUtis 객체의 copy메서드 사용
+		FileCopyUtils.copy(multipartFile.getBytes(), file);
+		
+		return name;
 	}
 }
