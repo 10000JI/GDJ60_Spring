@@ -116,15 +116,8 @@ public class Pager {
 		this.search = search;
 	}
 
-	public Long getPerPage() {
-		if(this.perPage==null || this.perPage ==0) {
-			this.perPage=10L;
-		}
-		
-		return perPage;
-	}
-	public void setPerPage(Long perPage) {
-		this.perPage = perPage;
+	public Long getTotalPage() {
+		return totalPage;
 	}
 	
 	public Long getPerBlock() {
@@ -138,8 +131,16 @@ public class Pager {
 		this.perBlock = perBlock;
 	}
 	
-	public Long getTotalPage() {
-		return totalPage;
+	
+	public Long getPerPage() {
+		if(this.perPage==null || this.perPage ==0) {
+			this.perPage=10L;
+		}
+		
+		return perPage;
+	}
+	public void setPerPage(Long perPage) {
+		this.perPage = perPage;
 	}
 
 	public Long getPage() {
@@ -190,6 +191,7 @@ public class Pager {
 	public void setStartRow(Long startRow) {
 		this.startRow = startRow;
 	}
+	
 	public Long getLastRow() {
 		return lastRow;
 	}
