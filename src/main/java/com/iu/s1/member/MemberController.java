@@ -18,6 +18,11 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
+	@RequestMapping(value="memberAgree", method=RequestMethod.GET)
+	public void setMemberAgree() throws Exception{
+		
+	}
+	
 	@RequestMapping(value = "list")
 	public ModelAndView getMemberList(ModelAndView mv) throws Exception {
 		List<MemberDTO> ar = memberService.getMemberList();
