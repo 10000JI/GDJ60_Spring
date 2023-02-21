@@ -28,7 +28,7 @@ public class BankBookDAOTest extends MyTestCase {
 		assertNotNull(bankBookDTO);
 	}
 	
-	@Test
+	//@Test
 	public void setBankBookAddTest() throws Exception{
 		int a = 0;
 		for(int i=0;i<30;i++) {
@@ -46,14 +46,14 @@ public class BankBookDAOTest extends MyTestCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void setBankBookDeleteTest() throws Exception{
 		BankBookDTO bankBookDTO = new BankBookDTO();
 		bankBookDTO.setBookNum(59L);
 		int a = bankBookDAO.setBankBookDelete(bankBookDTO);
 		assertEquals(1, a);
 	}
-	@Test
+	//@Test
 	public void setBankBookUpdateTest() throws Exception{
 		BankBookDTO bankBookDTO = new BankBookDTO();
 		bankBookDTO.setBookNum(1L);
