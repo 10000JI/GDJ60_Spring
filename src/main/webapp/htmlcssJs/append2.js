@@ -37,9 +37,7 @@ add.addEventListener("click",function(){
     attr.value='del'+idx;
     d.setAttributeNode(attr);
     idx++;
-
     
-
     result.append(d);
 })
 
