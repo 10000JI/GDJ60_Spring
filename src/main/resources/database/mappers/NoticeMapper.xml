@@ -24,7 +24,7 @@
   		<include refid="noticeCondition"></include>
   	</select>
   	
-  	<select id="getBoardList" resultType="BoardDTO" parameterType="Pager">
+  	<select id="getBoardList" resultType="NoticeDTO" parameterType="Pager">
   		SELECT * FROM
   		(	
   			SELECT ROWNUM R, C.* FROM

@@ -1,4 +1,4 @@
-package com.iu.s1.board.notice;
+package com.iu.s1.bankBook;
 
 import java.util.List;
 
@@ -13,19 +13,21 @@ import com.iu.s1.board.BbsService;
 import com.iu.s1.util.Pager;
 
 @Controller
-@RequestMapping("/notice/*")
-public class NoticeController {
+@RequestMapping("/bankBookComment/*")
+public class BankBookCommentController {
 	
 	@Autowired
-	private BbsService noticeService;
+	private BbsService bankBookCommentService;
 	
-	@RequestMapping(value="list", method = RequestMethod.GET)
+	@RequestMapping(value="list", method=RequestMethod.GET)
 	public ModelAndView getBoardList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<BbsDTO> ar = noticeService.getBoardList(pager);
+		List<BbsDTO> ar = bankBookCommentService.getBoardList(pager);
 		
-		mv.addObject("list", ar);
+		mv.addObject("list",ar);
 		mv.setViewName("board/list");
+		
+		//kind,search,booknum,num을 받음
 		return mv;
 	}
 	
