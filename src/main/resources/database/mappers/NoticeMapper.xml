@@ -8,10 +8,13 @@
   	<sql id="noticeCondition">
   		<where>
   			<if test="kind=='title'">
-  				TITLE Like '%' || #{search} || '%'
+  				TITLE LIKE '%' || #{search} || '%'
+  			</if>
+  			<if test="kind=='contents'">
+  				CONTENTS LIKE '%' || #{search} || '%'
   			</if>
   			<if test="kind=='writer'">
-  				WRITER Like '%' || #{search} || '%'
+  				WRITER LIKE '%' || #{search} || '%'
   			</if>
   		</where>
   	</sql>
@@ -26,7 +29,7 @@
   		(	
   			SELECT ROWNUM R, C.* FROM
   				(	SELECT * FROM NOTICE
-					<include refid="commentCondition"></include>
+					<include refid="noticeCondition"></include>
 					ORDER BY NUM DESC
 				) C
 		)
