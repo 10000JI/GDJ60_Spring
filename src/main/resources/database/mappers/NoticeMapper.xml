@@ -35,6 +35,10 @@
 		)
 		WHERE R BETWEEN #{startRow} AND #{lastRow} 
   	</select>
-  
-  <!-- 리스트할 땐 contents빼고 나머지 컬럼만 가져올 수 있게 -->
+  	
+  	<insert id="setBoardAdd" parameterType="BbsDTO">
+  		INSERT INTO NOTICE (NUM,TITLE,CONTENTS,WRITER,REGDATE,HIT)
+  		VALUES(NOTICE_SEQ.NEXTVAL,#{title}, #{contents}, #{writer},SYSDATE,0)
+  	</insert>
+  	
   </mapper>

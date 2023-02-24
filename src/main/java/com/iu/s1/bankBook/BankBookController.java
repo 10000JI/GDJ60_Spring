@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jmx.export.annotation.ManagedAttribute;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,7 +24,8 @@ public class BankBookController {
 	private BankBookService bankBookService;
 	
 	@RequestMapping(value = "list", method=RequestMethod.GET)
-	public ModelAndView getbankBookList(Pager pager) throws Exception {
+	public ModelAndView getbankBookList(@ModelAttribute Pager pager) throws Exception {
+		//매개변수에 들어간 Pager은 자동 객체 생성되면서 @ModelAttribute로 jsp에 자동으로 보내준다.(생략됨)
 		ModelAndView mv = new ModelAndView();
 		
 		List<BankBookDTO> ar= bankBookService.getBankBookList(pager);

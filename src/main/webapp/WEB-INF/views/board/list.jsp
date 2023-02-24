@@ -13,6 +13,9 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <div class="container-fluid">
+	<div class="row my-5">
+		<h1>${boardName} List</h1>
+	</div>
 	<div class="row">
 		<table class="table table-hover">
 			<thead>
@@ -24,7 +27,7 @@
 				<c:forEach items="${list}" var="dto">
 					<tr>
 						<td>${dto.num}</td>
-						<td><a href="./detail">${dto.title}</a></td>
+						<td><a href="./${boardName}detail">${dto.title}</a></td>
 						<td>${dto.writer}</td>
 						<td>${dto.regDate}</td>
 						<td>${dto.hit}</td>
