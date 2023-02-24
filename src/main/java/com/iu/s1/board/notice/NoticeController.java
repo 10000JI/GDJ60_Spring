@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s1.board.BbsDTO;
 import com.iu.s1.board.BbsService;
+import com.iu.s1.board.BoardDTO;
+import com.iu.s1.board.qna.QnaDTO;
 import com.iu.s1.util.Pager;
 
 @Controller
@@ -20,7 +22,7 @@ import com.iu.s1.util.Pager;
 public class NoticeController {
 	
 	@Autowired
-	private BbsService noticeService;
+	private NoticeService noticeService;
 	
 	@ModelAttribute("boardName")
 	public String getBoardName() {
@@ -50,8 +52,25 @@ public class NoticeController {
 	public ModelAndView setBoardAdd(NoticeDTO noticeDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = noticeService.setBoardAdd(noticeDTO);
-		mv.addObject("result",result);
+		
+		String message="등록 실패";
+		if(result>0) {
+			message="글이 등록 되었습니다";
+		}
+		
+		mv.addObject("result",message);
+		mv.addObject("url","./list");
 		mv.setViewName("common/result");
+		return mv;
+	}
+	
+	@GetMapping("detail")
+	public ModelAndView getBoardDetail(NoticeDTO noticeDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		BoardDTO boardDTO = noticeService.getBoardDetail(noticeDTO);
+		
+		mv.addObject("dto",boardDTO);
+		mv.setViewName("board/detail");
 		return mv;
 	}
 	

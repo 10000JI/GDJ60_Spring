@@ -15,7 +15,7 @@ import com.iu.s1.util.Pager;
 public class NoticeService implements BoardService{
 	
 	@Autowired
-	private BbsDAO noticeDAO;
+	private NoticeDAO noticeDAO;
 	//bean의 이름으로 찾는다 (클래스를 상위클래스인 BbsDAO로 선언)	
 	
 	@Override
@@ -48,7 +48,7 @@ public class NoticeService implements BoardService{
 	@Override
 	public BoardDTO getBoardDetail(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return noticeDAO.getBoardDetail(boardDTO);
 	}
 	
 }
