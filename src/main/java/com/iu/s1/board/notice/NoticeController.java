@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s1.board.BbsDTO;
@@ -49,7 +50,7 @@ public class NoticeController {
 	
 	@PostMapping("add")
 	//메소드명을 명시하는 @PostMapping이 나옴
-	public ModelAndView setBoardAdd(NoticeDTO noticeDTO) throws Exception{
+	public ModelAndView setBoardAdd(NoticeDTO noticeDTO, MultipartFile[] files) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = noticeService.setBoardAdd(noticeDTO);
 		

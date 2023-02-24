@@ -33,13 +33,14 @@
 				<textarea name="contents" class="form-control" id="contents" placeholder="설명입력" rows="7"></textarea>
 			</div>
 			
-			<!-- <div id="fileList">
-				<div class="mb-3">
+			<div id="fileList">
+<!-- 				<div class="mb-3">
 					<label for="files" class="form-label">이미지</label>
 					<input type="file" class="form-control" id="files" name="pic">
-				</div>
+					<button type="button id=fileDelete">X</button>
+				</div> -->
 				<button type="button" id="fileAdd">ADD</button>
-			</div> -->
+			</div>
 		
 			<div class="mb-3">
 				<button class="btn btn-outline-success" type="submit">글쓰기</button> 
@@ -51,7 +52,7 @@
 	<script type="text/javascript" src="../resources/js/fileManager.js"></script>
 	<script>
 		setMax(3);
-		//setParam('f');
+		setParam('files');
 	</script>
 	<c:import url="../template/common_js.jsp"></c:import>
 </body>

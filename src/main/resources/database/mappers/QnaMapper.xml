@@ -28,7 +28,7 @@
 		SELECT * FROM
   		(	
   			SELECT ROWNUM R, C.* FROM
-  				(	SELECT * FROM QNA
+  				(	SELECT NUM,WRITER,TITLE,REGDATE,HIT,DEPTH FROM QNA
 					<include refid="qnaCondition"></include>
 					ORDER BY REF DESC, STEP ASC
 				) C

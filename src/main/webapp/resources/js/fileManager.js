@@ -4,6 +4,7 @@ const fileAdd = document.getElementById('fileAdd');
 let count = 0;
 let max = 1;
 let param='pic';
+let idx =0;
 
 function setParam(p){
     param=p;
@@ -13,7 +14,18 @@ function setMax(m){
     max=m;
 }
 
+
 console.log("test")
+
+fileList.addEventListener('click',function(e){
+    if(e.target.classList.contains('dels')){
+        let id = e.target.getAttribute('data-dels-id')
+        document.getElementById(id).remove();
+        console.log("delete:"+id);
+    }
+
+})
+
 
 fileAdd.addEventListener('click',function(){
 
@@ -28,15 +40,20 @@ fileAdd.addEventListener('click',function(){
     let div = document.createElement('div'); //부모 div
     let label = document.createElement('label'); //lable
     let input = document.createElement('input'); //input
-   
+    let button = document.createElement('button');
+    
     //element 조합
     div.appendChild(label);
     div.appendChild(input);
+    div.appendChild(button);
     
     //attribute 생성 및 적용
     //div
     let attr = document.createAttribute('class');
     attr.value="mb-3";
+    div.setAttributeNode(attr);
+    attr = document.createAttribute('id');
+    attr.value='del'+idx;
     div.setAttributeNode(attr);
     
     //attribute 생성 및 적용
@@ -68,7 +85,22 @@ fileAdd.addEventListener('click',function(){
     attr.value=param;
     input.setAttributeNode(attr);
 
+    attr = document.createAttribute('type');
+    attr.value='button';
+    button.setAttributeNode(attr);
+    attr = document.createAttribute('class');   
+    attr.value="dels"
+    button.setAttributeNode(attr);
+    attr = document.createAttribute('data-dels-id')
+    attr.value = 'del'+idx;
+    button.setAttributeNode(attr);
+    idx++;
+    text = document.createTextNode("X")
+    button.appendChild(text);
+    
+
     fileList.prepend(div);
 
 })
+
 
