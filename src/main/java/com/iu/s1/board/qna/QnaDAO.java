@@ -53,7 +53,7 @@ public class QnaDAO implements BoardDAO {
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(NAMESPACE+"setBoardDelete", bbsDTO);
 	}
 
 	@Override
@@ -68,5 +68,11 @@ public class QnaDAO implements BoardDAO {
 	
 	public int setReplyAdd(QnaDTO qnaDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setReplyAdd", qnaDTO);
+	}
+	
+	@Override
+	public List<BoardFileDTO> getBoardFileList(BbsDTO bbsDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE+"getBoardFileList",bbsDTO);
 	}
 }

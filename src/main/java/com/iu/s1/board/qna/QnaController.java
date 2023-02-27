@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -102,4 +103,19 @@ public class QnaController {
 		mv.addObject("url", "./detail?num="+qnaDTO.getNum());
 		return mv;
 	}
+	
+	@PostMapping("delete")
+	public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = qnaService.setBoardDelete(bbsDTO,session);
+		String message="삭제 실패";
+		if(result>0) {
+			message="글이 삭제 되었습니다";
+		}
+		mv.setViewName("common/result");
+		mv.addObject("result", message);
+		mv.addObject("url", "./list");
+		return mv;
+	}
+	
 }

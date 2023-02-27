@@ -36,7 +36,7 @@
 		WHERE R BETWEEN #{startRow} AND #{lastRow} 
   	</select>
   	
-  	<select id="getBoardDetail" resultType="QnaDTO" parameterType="BbsDTO">
+  	<select id="getBoardDetail" resultMap="getBoardDetailResult" parameterType="BoardDTO">
   		SELECT Q.*, QF.*
 		FROM QNA Q
 			LEFT JOIN
@@ -44,6 +44,22 @@
 			ON (Q.NUM = QF.NUM)
 		WHERE Q.NUM=#{num}
   	</select>
+  	
+  	<resultMap type="QnaDTO" id="getBoardDetailResult">
+  		<id column="num" property="num"/>
+	  		<result column="title" property="title"/>
+	  		<result column="writer" property="writer"/>
+	  		<result column="contents" property="contents"/>
+	  		<result column="regDate" property="regDate"/>
+	  		<result column="hit" property="hit"/>
+	  		<result column="depth" property="depth"/>
+		<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+		<!-- javaType: 데이터타입 ofType: 제네릭  //리스트는 어떤 타입을 모아놓았는지 모르기 때문에 제네릭 타입을 적어줘야 한다.-->
+			<id column="fileNum" property="fileNum"/>
+				<result column="fileName" property="fileName"/>
+				<result column="oriName" property="oriName"/>
+		</collection>  		
+  	</resultMap>
   	
   	<insert id="setBoardAdd" parameterType="BbsDTO">
   		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
@@ -67,5 +83,12 @@
   		INSERT INTO QNA (NUM,TITLE,CONTENTS,WRITER,REGDATE,HIT,REF,STEP,DEPTH)
   		VALUES(QNA_SEQ.NEXTVAL,#{title}, #{contents}, #{writer},SYSDATE,0,#{ref},#{step},#{depth})
   	</insert>
+  	
+  	<delete id="setBoardDelete" parameterType="BbsDTO">
+  		DELETE QNA WHERE NUM=#{num}
+  	</delete>
  	
+ 	<select id="getBoardFileList" resultType="BoardFileDTO" parameterType="BbsDTO">
+ 		SELECT * FROM QNAFILES WHERE NUM=#{num}
+ 	</select>
   </mapper>

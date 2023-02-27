@@ -52,7 +52,7 @@
 	<script type="text/javascript" src="../resources/js/fileManager.js"></script>
 	<script>
 		setMax(3);
-		//setParam('f');
+		setParam('files');
 	</script>
 	<c:import url="../template/common_js.jsp"></c:import>
 </body>

@@ -1,5 +1,7 @@
 package com.iu.s1.board;
 
+import java.util.List;
+
 public interface BoardDAO extends BbsDAO{
 	
 	//list
@@ -16,5 +18,8 @@ public interface BoardDAO extends BbsDAO{
 
 	
 	//delete
+	
+	//BoardFile
+	public List<BoardFileDTO> getBoardFileList(BbsDTO bbsDTO) throws Exception;
 
 }
