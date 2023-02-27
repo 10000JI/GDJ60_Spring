@@ -1,16 +1,22 @@
 package com.iu.s1.board.qna;
 
+import java.io.File;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.s1.board.BbsDAO;
 import com.iu.s1.board.BbsDTO;
 import com.iu.s1.board.BoardDTO;
+import com.iu.s1.board.BoardFileDTO;
 import com.iu.s1.board.BoardService;
 import com.iu.s1.board.notice.NoticeDAO;
 import com.iu.s1.board.notice.NoticeDTO;
+import com.iu.s1.util.FileManager;
 import com.iu.s1.util.Pager;
 
 @Service
@@ -19,6 +25,10 @@ public class QnaService implements BoardService {
 	@Autowired
 	private QnaDAO qnaDAO;
 
+	@Autowired
+	private FileManager fileManager;
+	
+	
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
 		pager.makeRow();
@@ -27,9 +37,31 @@ public class QnaService implements BoardService {
 	}
 
 	@Override
-	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return qnaDAO.setBoardAdd(bbsDTO);
+	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile [] multipartFiles, HttpSession session)  throws Exception {
+		int result = qnaDAO.setBoardAdd(bbsDTO);
+		
+		//file을 HDD에 저장
+		String realPath = session.getServletContext().getRealPath("resources/upload/qna/");
+		System.out.println(realPath);
+		
+		for(MultipartFile multipartFile:multipartFiles) {
+			if(multipartFile.isEmpty()) {
+				//파일 업로드가 안된 게시물은 continue로 처음으로 올라감
+				continue;
+			}
+			String fileName = fileManager.fileSave(multipartFile, realPath);
+			
+			//DB에 INSERT
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			boardFileDTO.setNum(bbsDTO.getNum());
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOriName(multipartFile.getOriginalFilename());
+			
+			result = qnaDAO.setBoardFileAdd(boardFileDTO);
+		}
+		
+		
+		return result;
 	}
 
 	@Override

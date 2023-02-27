@@ -37,7 +37,12 @@
   	</select>
   	
   	<select id="getBoardDetail" resultType="QnaDTO" parameterType="BbsDTO">
-  		SELECT * FROM QNA WHERE NUM=#{num}
+  		SELECT Q.*, QF.*
+		FROM QNA Q
+			LEFT JOIN
+			QNAFILES QF
+			ON (Q.NUM = QF.NUM)
+		WHERE Q.NUM=#{num}
   	</select>
   	
   	<insert id="setBoardAdd" parameterType="BbsDTO">
@@ -47,7 +52,12 @@
   		INSERT INTO QNA (NUM,TITLE,CONTENTS,WRITER,REGDATE,HIT,REF,STEP,DEPTH)
   		VALUES(#{num},#{title}, #{contents}, #{writer},SYSDATE,0,#{num},0,0)
   	</insert>
-  	
+ 	
+ 	<insert id="setBoardFileAdd" parameterType="BoardFileDTO">
+ 		INSERT INTO QNAFILES (FILENUM, NUM, FILENAME, ORINAME)
+ 		VALUES (QNA_SEQ.NEXTVAL ,#{num}, #{fileName}, #{oriName})
+ 	</insert>
+ 
   	<update id="setStepUpdate" parameterType="QnaDTO">
   		UPDATE QNA SET STEP = STEP+1
   		WHERE REF = #{ref} AND STEP > ${step}
