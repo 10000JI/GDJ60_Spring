@@ -19,9 +19,14 @@ console.log("test")
 
 fileList.addEventListener('click',function(e){
     if(e.target.classList.contains('dels')){
-        let id = e.target.getAttribute('data-dels-id')
-        document.getElementById(id).remove();
-        console.log("delete:"+id);
+        //상대선택자
+        console.log(e.target.parentNode)
+        e.target.parentNode.remove();
+
+        // let id = e.target.getAttribute('data-dels-id')
+        // document.getElementById(id).remove(); //부모 삭제될때 자식까지 삭제 된다
+        // console.log("delete:"+id);
+        count--; //지우면 count도 줄여준다 (최대 첨부파일 수)
     }
 
 })
@@ -38,36 +43,39 @@ fileAdd.addEventListener('click',function(){
 
     //element 생성
     let div = document.createElement('div'); //부모 div
-    let label = document.createElement('label'); //lable
+   // let label = document.createElement('label'); //lable
     let input = document.createElement('input'); //input
-    let button = document.createElement('button');
+    let button = document.createElement('button'); //button
     
     //element 조합
-    div.appendChild(label);
+    //div.appendChild(label);
     div.appendChild(input);
     div.appendChild(button);
     
     //attribute 생성 및 적용
     //div
     let attr = document.createAttribute('class');
-    attr.value="mb-3";
+    attr.value="input-group mb-3";
     div.setAttributeNode(attr);
+
+    //div(부모)의 dels target 으로 받아온 후, id까지 설정(인덱스로 받아옴)
     attr = document.createAttribute('id');
-    attr.value='del'+idx;
+    attr.value="f"+idx;
     div.setAttributeNode(attr);
-    
+
+ 
     //attribute 생성 및 적용
     //label
-    attr = document.createAttribute('class');
-    attr.value="form-label";
-    label.setAttributeNode(attr);
-    attr = document.createAttribute('for');
-    attr.value="files";
-    label.setAttributeNode(attr);
+    //attr = document.createAttribute('class');
+    //attr.value="form-label";
+    //label.setAttributeNode(attr);
+    //attr = document.createAttribute('for');
+    //attr.value="files";
+    //label.setAttributeNode(attr);
     //label의 컨텐츠 추가 및 적용
-    let text = document.createTextNode("이미지");
+    // let text = document.createTextNode("이미지");
     //element 조합
-    label.appendChild(text);
+    //label.appendChild(text);
     
     
     //attribute 생성 및 적용
@@ -85,19 +93,21 @@ fileAdd.addEventListener('click',function(){
     attr.value=param;
     input.setAttributeNode(attr);
 
+    //button
     attr = document.createAttribute('type');
     attr.value='button';
     button.setAttributeNode(attr);
     attr = document.createAttribute('class');   
-    attr.value="dels"
+    attr.value="btn btn-outline-danger dels"
     button.setAttributeNode(attr);
-    attr = document.createAttribute('data-dels-id')
-    attr.value = 'del'+idx;
+    attr = document.createTextNode("X")
+    button.appendChild(attr);
+
+    //div(부모)의 dels target 으로 받아온 후, 자식의 id도 설정(인덱스로 받아옴)
+    attr = document.createAttribute('data-dels-id');
+    attr.value = 'f'+idx;
     button.setAttributeNode(attr);
     idx++;
-    text = document.createTextNode("X")
-    button.appendChild(text);
-    
 
     fileList.prepend(div);
 

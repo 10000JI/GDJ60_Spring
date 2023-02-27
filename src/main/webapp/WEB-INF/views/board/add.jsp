@@ -34,12 +34,11 @@
 			</div>
 			
 			<div id="fileList">
-<!-- 				<div class="mb-3">
-					<label for="files" class="form-label">이미지</label>
-					<input type="file" class="form-control" id="files" name="pic">
-					<button type="button id=fileDelete">X</button>
-				</div> -->
-				<button type="button" id="fileAdd">ADD</button>
+<!-- 				<div class="input-group mb-3">
+						<input type="file" class="form-control" id="files" name="pic">
+						<button type="button id=fileDelete">X</button>
+					</div> -->
+				<button type="button" class="btn btn-primary" id="fileAdd">ADD</button>
 			</div>
 		
 			<div class="mb-3">
