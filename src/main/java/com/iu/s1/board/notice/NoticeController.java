@@ -2,6 +2,8 @@ package com.iu.s1.board.notice;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,9 +52,9 @@ public class NoticeController {
 	
 	@PostMapping("add")
 	//메소드명을 명시하는 @PostMapping이 나옴
-	public ModelAndView setBoardAdd(NoticeDTO noticeDTO, MultipartFile[] files) throws Exception{
+	public ModelAndView setBoardAdd(NoticeDTO noticeDTO, MultipartFile[] files,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = noticeService.setBoardAdd(noticeDTO);
+		int result = noticeService.setBoardAdd(noticeDTO,files,session);
 		
 		String message="등록 실패";
 		if(result>0) {
@@ -72,6 +74,20 @@ public class NoticeController {
 		
 		mv.addObject("dto",boardDTO);
 		mv.setViewName("board/detail");
+		return mv;
+	}
+	
+	@PostMapping("delete")
+	public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = noticeService.setBoardDelete(bbsDTO, session);
+		String message="삭제 실패";
+		if(result>0) {
+			message="글이 삭제 되었습니다";
+		}
+		mv.setViewName("common/result");
+		mv.addObject("result", message);
+		mv.addObject("url", "./list");
 		return mv;
 	}
 	

@@ -39,16 +39,35 @@
 			SELECT ROWNUM R, B.* FROM
 			(
 				SELECT * FROM BANKBOOK
-				<include refid="searchCondition2"></include>				
+				<include refid="searchCondition"></include>				
 				ORDER BY BOOKNUM DESC
 			) B
 		)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
- 	<select id="getBankBookDetail" parameterType="BankBookDTO" resultType="BankBookDTO">
- 		SELECT * FROM BANKBOOK WHERE BOOKNUM=#{bookNum}
+ 	<select id="getBankBookDetail" parameterType="BankBookDTO" resultMap="bankBookDetailResult">
+ 		SELECT B.*, BI.*
+		FROM BANKBOOK B
+			LEFT JOIN
+			BANKBOOKIMG BI
+			ON (B.BOOKNUM = BI.BOOKNUM)
+		WHERE B.BOOKNUM = #{bookNum}
  	</select>
+ 	
+ 	<resultMap type="BankBookDTO" id="bankBookDetailResult">
+ 		<id column="BookNUM" property="bookNum"/>
+ 		<result column="BookDetail" property="bookDetail"/>
+ 		<result column="BookTitle" property="bookTitle"/>
+ 		<result column="BookRate" property="bookRate"/>
+ 		<result column="BookSale" property="bookSale"/>
+ 		<!-- 1:1 관계 -->
+ 		<association property="bankBookImgDTO" javaType="BankBookImgDTO">
+ 			<id column="FileNum" property="fileNum"/>
+ 			<result column="FileName" property="fileName"/>
+ 			<result column="OriName" property="oriName"/>
+ 		</association>
+ 	</resultMap>
 
  	<insert id="setBankBookAdd" parameterType="BankBookDTO">
  		<selectKey keyProperty="bookNum" resultType="Long" order="BEFORE">

@@ -74,10 +74,14 @@ public class QnaService implements BoardService {
 	public int setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
 		// TODO Auto-generated method stub
 		List<BoardFileDTO> ar = qnaDAO.getBoardFileList(bbsDTO);
+		//해당 게시판 글의 파일(이미지)가 존재하는지 한번 select (여러개 있을 수 있으니 list로)
 		int result = qnaDAO.setBoardDelete(bbsDTO);
+		//다음에 지우고싶은거 삭제
 		if(result>0) {
 			String realPath = session.getServletContext().getRealPath("resources/upload/qna/");
 			for(BoardFileDTO boardFileDTO:ar) {
+				//filename은 다 다르게 설정되므로 FileManger 클래스에서
+				//fileDelete 메소드가 path와 함께 해당 이름가진 것을 delete 해준다
 				boolean check = fileManager.fileDelete(realPath, boardFileDTO.getFileName());
 			}
 		}
