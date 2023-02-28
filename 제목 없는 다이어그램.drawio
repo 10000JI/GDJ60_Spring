@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-02-14T08:18:58.476Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="jxFsxOs4vLkbDkELJqY-" version="20.8.17" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2023-02-28T08:52:21.531Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="EoqFhqB3SoA9gXbIqpiS" version="20.8.23" type="github" pages="3">
   <diagram name="페이지-1" id="kmOCGzDiKC8r4Smnca_1">
-    <mxGraphModel dx="2261" dy="756" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2022" dy="583" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -236,16 +236,16 @@
         <mxCell id="fiWziOA5vwO6seW3Qhj5-19" value="Update" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=12;" parent="1" vertex="1">
           <mxGeometry x="-105" y="970" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="gGidZ9fArEo11jRJ9QOs-1" value="내장객체&lt;br&gt;&lt;br&gt;page&lt;br&gt;Request, Response&lt;br&gt;Seesions" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="gGidZ9fArEo11jRJ9QOs-1" value="내장객체&lt;br&gt;&lt;br&gt;page&lt;br&gt;Request, Response&lt;br&gt;Seesions" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="-695" y="510" width="220" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="gGidZ9fArEo11jRJ9QOs-2" value="Session" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gGidZ9fArEo11jRJ9QOs-2" value="Session" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-560" y="60" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="gGidZ9fArEo11jRJ9QOs-3" value="member: MemberDTO&lt;br&gt;NAME: A" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="gGidZ9fArEo11jRJ9QOs-3" value="member: MemberDTO&lt;br&gt;NAME: A" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-500" y="70" width="130" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="gGidZ9fArEo11jRJ9QOs-4" value="Fowarding Redirect" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="gGidZ9fArEo11jRJ9QOs-4" value="Fowarding Redirect" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="-710" y="60" width="130" height="30" as="geometry" />
         </mxCell>
       </root>
