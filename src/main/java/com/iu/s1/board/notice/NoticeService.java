@@ -84,4 +84,10 @@ public class NoticeService implements BoardService{
 		return noticeDAO.getBoardDetail(boardDTO);
 	}
 	
+	@Override
+	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return noticeDAO.getBoardFileDetail(boardFileDTO);
+	}
+	
 }
