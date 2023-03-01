@@ -30,8 +30,10 @@
 		<div>
 			<form action="./update" id="frm">
 				<input type="hidden" name="num" value="${dto.num}">
-				<button id="update" type="button" class="btn btn-primary">UPDATE</button>
-				<button id="delete" type="button" class="btn btn-info">DELETE</button>
+				<c:if test="${dto.writer eq member.id}">
+					<button id="update" type="button" class="btn btn-primary">UPDATE</button>
+					<button id="delete" type="button" class="btn btn-info">DELETE</button>
+				</c:if>
 			</form>
 		</div>
 	</div>

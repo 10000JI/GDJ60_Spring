@@ -20,7 +20,12 @@
 		<form class="col-md-7" action="./add" method="post" enctype="multipart/form-data">
 			<div class="mb-3">
 				<label for="writer" class="form-label">작성자</label> 
-				<input type="text" name="writer" class="form-control" id="writer">
+				<c:if test="${not empty member}">
+					<input type="text" name="writer" class="form-control" id="writer" value="${member.id}" readonly>
+				</c:if>
+				<c:if test="${empty member}">
+					<input type="text" name="writer" class="form-control" id="writer" value="${member.id}" disabled>
+				</c:if>
 			</div>
 			
 			<div class="mb-3">
