@@ -4,10 +4,12 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.iu.s1.member.MemberDTO;
 
+@Component
 public class AdminCheckInterceptor extends HandlerInterceptorAdapter {
 	//ROLE이 Admin이면 통과
 	//그외 나머지는 home.jsp로 보낸다
