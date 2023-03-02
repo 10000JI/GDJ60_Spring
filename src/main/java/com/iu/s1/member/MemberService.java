@@ -30,6 +30,7 @@ public class MemberService {
 			//result가 0이면 result.getPw()에서 nullpointerException 발생 , null이 아닐 때 조건도 줘야 함
 			//해당 조건은 앞에 순서 줘야 함 (False && ..이면 무조건  else로 가기 때문)
 			memberDTO.setPw(null);
+			memberDTO.setRoleDTOs(result.getRoleDTOs());
 			return memberDTO;
 			//리턴되는 것은 result가 아니라 memberDTO(id,pw에서 pw는 null이 됐으니 id만)
 		}else {

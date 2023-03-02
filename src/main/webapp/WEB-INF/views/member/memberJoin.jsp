@@ -40,7 +40,7 @@
 
 		<div class="mb-3">
 			<label for="pw" class="form-label fw-bold">비밀번호</label> 
-			<input type="password" name="pw" class="form-control " id="pwCheck" placeholder="비밀번호 입력">
+			<input type="password" name="pwCheck" class="form-control " id="pwCheck" placeholder="비밀번호 입력">
 			<div id="pwCheckResult"></div>
 		</div>
 		

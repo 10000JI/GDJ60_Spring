@@ -13,7 +13,7 @@
 
 <div class="container-fluid">
 	<div class="row justify-content-center">
-		<h1 class="col-md-7 text-center">${boardName} Add PAGE</h1>
+		<h1 class="col-md-7 text-center">${boardName} Update PAGE</h1>
 	</div>	
 	
 	<div class="row justify-content-center">
