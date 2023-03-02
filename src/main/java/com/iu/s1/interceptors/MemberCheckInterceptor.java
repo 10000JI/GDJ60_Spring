@@ -20,7 +20,6 @@ public class MemberCheckInterceptor extends HandlerInterceptorAdapter{
 		//return이 true라면 다음 Controller로 진행
 		//return이 true라면 다음 Controller로 진행 x
 		
-		System.out.println("Controller 진입 전 체크");
 		Object obj =request.getSession().getAttribute("member");
 		if(obj!= null) {
 			return true;
@@ -43,7 +42,6 @@ public class MemberCheckInterceptor extends HandlerInterceptorAdapter{
 			ModelAndView modelAndView) throws Exception {
 		// TODO Auto-generated method stub
 		//Controller에서 리턴 후 DS 전
-		System.out.println("Controller에 리턴 후 DS 진입 전");
 	}
 	
 	@Override
@@ -51,7 +49,6 @@ public class MemberCheckInterceptor extends HandlerInterceptorAdapter{
 			throws Exception {
 		// TODO Auto-generated method stub
 		// JSP 렌더링 후
-		System.out.println("JSP 렌더링 후");
 	}
 
 	
