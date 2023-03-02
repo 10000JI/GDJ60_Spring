@@ -31,6 +31,8 @@ public class OwnerCheckInterceptor extends HandlerInterceptorAdapter {
 		//update뿐만 아니라 delete 할때도 함께 사용할 수 있도록 만듦
 		//밑에 주석처리는 update만 가능
 		//num을 받아서 지우는걸 여기서 확인하고 지워준다
+		//글의 작성자와 로그인한 id와 같은지 확인(notice에선 관리자로 들어오고, 그 관리자가 동일 id를 가진 관리자인지 check)
+		//(qna는 writer와 member의 id가 동일한지 check)
 		Long num =Long.parseLong(request.getParameter("num"));
 		
 		String uri = request.getRequestURI();
@@ -63,6 +65,7 @@ public class OwnerCheckInterceptor extends HandlerInterceptorAdapter {
 //	@Override
 //	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 //			ModelAndView modelAndView) throws Exception {
+//		//postHandle()메소드는 ModelAndView가 존재(controller에서 ds로 받아오는 과정)
 //		System.out.println("Owner Check Inerceptor");
 //		//1. 로그인 한 사용자의 id 알아보기
 //		MemberDTO memberDTO =(MemberDTO) request.getSession().getAttribute("member");
