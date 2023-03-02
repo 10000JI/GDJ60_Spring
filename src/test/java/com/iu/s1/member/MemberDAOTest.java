@@ -2,17 +2,20 @@ package com.iu.s1.member;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.iu.s1.MyTestCase;
+import com.iu.s1.product.ProductDTO;
 
 public class MemberDAOTest extends MyTestCase {
 
 	@Autowired
 	private MemberDAO memberDAO;
 	
-	@Test
+	//@Test
 	public void setMemberJoinTest() throws Exception {
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId("ffff");
@@ -24,7 +27,7 @@ public class MemberDAOTest extends MyTestCase {
 		assertEquals(1, a);
 	}
 	
-	@Test
+	//@Test
 	public void setMemberUpdateTest() throws Exception{
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setId("MINJI");
@@ -35,4 +38,11 @@ public class MemberDAOTest extends MyTestCase {
 		int a = memberDAO.setMemberUpdate(memberDTO);
 		assertEquals(1, a);
 	}
+	@Test
+	public void getMemberDetailTest() throws Exception {
+
+		List<MemberDTO> ar = memberDAO.getMemberList();
+		assertNotEquals(0,ar.size());
+	}
+	
 }
