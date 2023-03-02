@@ -1,5 +1,6 @@
 package com.iu.s1.interceptors;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,12 +21,21 @@ public class MemberCheckInterceptor extends HandlerInterceptorAdapter{
 		//return이 true라면 다음 Controller로 진행 x
 		
 		System.out.println("Controller 진입 전 체크");
-		MemberDTO memberDTO = (MemberDTO)request.getSession().getAttribute("member");/
-		if(memberDTO!= null) {
-			response.sendRedirect("../member/memberLogin");
-			return false;
+		Object obj =request.getSession().getAttribute("member");
+		if(obj!= null) {
+			return true;
 		}
-		return true;
+		System.out.println("로그인 안한 경우");
+		//1. Foward로 jsp를 찾아가고 싶다
+		//url주소와 메세지 보내줘야함(엘럿)
+//		request.setAttribute("result", "권한이 충분하지 않아요");
+//		request.setAttribute("url", "../member/memberLogin");
+//		RequestDispatcher view= request.getRequestDispatcher("/WEB-INF/views/common/result.jsp");
+//		view.forward(request, response);
+
+		//2. Redirect
+		response.sendRedirect("../../../member/memberLogin");
+		return false;
 	}
 	
 	@Override
