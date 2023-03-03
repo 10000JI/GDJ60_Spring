@@ -28,14 +28,14 @@
 	
 	<beans:bean class="com.iu.s1.interceptors.AdminCheckInterceptor" id="adminCheckInterceptor"></beans:bean>
 	
-	<interceptors>
+	<!-- <interceptors>
 		<interceptor>
 			<mapping path="/qna/*"/>
 			<mapping path="/member/*"/>
 			<exclude-mapping path="/qna/list"/>
 			<exclude-mapping path="/member/memberLogin"/>
 			<exclude-mapping path="/member/memberJoin"/>
-			<exclude-mapping path="/member/memberAgree"/>
+			<exclude-mapping path="/member/memberIdCheck"/>
 			<beans:ref bean="memberCheckInterceptor"/>
 		</interceptor>
 		<interceptor>
@@ -43,7 +43,7 @@
 			<exclude-mapping path="/notice/list"/>
 			<exclude-mapping path="/notice/detail"/>
 			<beans:ref bean="adminCheckInterceptor"/>
-		<!-- 	<beans:bean class="com.iu.s1.interceptors.AdminCheckInterceptor"></beans:bean> -->
+			<beans:bean class="com.iu.s1.interceptors.AdminCheckInterceptor"></beans:bean>
 		</interceptor>
 		<interceptor>
 			<mapping path="/qna/update"/>
@@ -52,7 +52,7 @@
 			<mapping path="/notice/delete"/>
 			<beans:ref bean="ownerCheckInterceptor"/>
 		</interceptor>
-	</interceptors>
+	</interceptors> -->
 	
 	<context:component-scan base-package="com.iu.s1" />
 </beans:beans>

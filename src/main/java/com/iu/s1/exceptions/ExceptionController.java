@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
-@ControllerAdvice
+//@ControllerAdvice
 public class ExceptionController {
 	//예외를 전문적으로 처리하는 메서드
 	//프로젝트 내에서 발생하는 Exception은 전부 여기서 처리
