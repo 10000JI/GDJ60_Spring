@@ -36,20 +36,5 @@ public class MemberCheckInterceptor extends HandlerInterceptorAdapter{
 		response.sendRedirect("../../../member/memberLogin");
 		return false;
 	}
-	
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-		// TODO Auto-generated method stub
-		//Controller에서 리턴 후 DS 전
-	}
-	
-	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
-		// TODO Auto-generated method stub
-		// JSP 렌더링 후
-	}
-
-	
+		
 }
