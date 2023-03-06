@@ -42,12 +42,12 @@
   	</insert>
   	
   	<delete id="setBoardDelete" parameterType="BbsDTO">
- 		DELETE BANKBOOKCOMMENT WHERE NUM=${num}
+ 		DELETE BANKBOOKCOMMENT WHERE NUM=#{num}
  	</delete> 
  	
  	<update id="setBoardUpdate" parameterType="BbsDTO">
  		UPDATE BANKBOOKCOMMENT SET CONTENTS=#{contents}
-		WHERE NUM=${num}
+		WHERE NUM=#{num}
  	</update>
   	
   	

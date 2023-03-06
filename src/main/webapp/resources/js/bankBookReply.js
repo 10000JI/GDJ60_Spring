@@ -21,7 +21,7 @@ replyAdd.addEventListener("click",function(){
             if(this.responseText.trim()==1){
                 alert('댓글이 등록 되었습니다.')
                 replyContents.value="";
-                getList();
+                getList(1);
             }else {
                 alert('댓글 등록에 실패하였습니다.')
             }
@@ -64,7 +64,7 @@ commentListResult.addEventListener("click",function(e){
 
 })
 
-
+// delete
 commentListResult.addEventListener('click',function(e){
 
     let deleteButton = e.target;
@@ -89,20 +89,45 @@ commentListResult.addEventListener('click',function(e){
     e.preventDefault();
 })
 
-
+// update
 commentListResult.addEventListener('click',function(e){
-
     let updateButton = e.target;
     if(updateButton.classList.contains("update")){
-        let xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "../bankBookComment/update?num="+updateButton.getAttribute("data-update-num"));
-        xhttp.send()
-        xhttp.addEventListener("readystatechange", function(){
-            if(this.readyState==4 && this.status==200){
-              console.log(this.responseText)
-            }
-        })
+        //console.log(updateButton.parentNode.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling);
+        let num = updateButton.getAttribute("data-comment-num");
+        let contents = document.getElementById('contents'+num);
+        //console.log(contents);
+        //contents.innerHTML='<textarea name="" id="" cols="30" rows="3">'+contents.innerHTML+'</textarea>';
+        contents.firstChild.removeAttribute("readonly");
+        let btn = document.createElement('button');
+        let attr = document.createAttribute('class');
+        attr.value='btn btn-primary';
+        btn.setAttributeNode(attr);
+        attr = document.createTextNode("확인");
+        btn.appendChild(attr);
+        contents.appendChild(btn);
+        
+        btn.addEventListener('click',function(){
+            console.log(contents.firstChild.value);
+            console.log(num);
 
+            let xhttp = new XMLHttpRequest();
+            xhttp.open('POST',"../bankBookComment/update");
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send('num='+num+"&contents="+contents.firstChild.value);
+            xhttp.addEventListener("readystatechange", function(){
+                if(this.readyState==4 && this.status==200){
+                   let result = this.responseText.trim();
+                   if(result==1){
+                    alert("수정이 성공 되었습니다.");
+                    getList(1);
+                   } else{
+                    alert("수정 실패");
+                   }
+                }
+            })
+        })
     }
     e.preventDefault();
 })
+

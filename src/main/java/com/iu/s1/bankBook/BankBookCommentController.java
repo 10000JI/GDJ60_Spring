@@ -60,7 +60,7 @@ public class BankBookCommentController {
 		return mv;
 	}
 	
-	@GetMapping("update")
+	@PostMapping("update")
 	public ModelAndView setBoardUpdate(BankBookCommentDTO bankBookCommentDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = bankBookCommentService.setBoardUpdate(bankBookCommentDTO);

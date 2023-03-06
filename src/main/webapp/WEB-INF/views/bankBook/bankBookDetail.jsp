@@ -47,6 +47,5 @@
 
 <c:import url="../template/common_js.jsp"></c:import>	
 <script src="/resources/js/bankBookReply.js"></script>
-<script src="/resources/js/commentList.js"></script>
 </body>
 </html>
