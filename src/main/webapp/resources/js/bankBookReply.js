@@ -2,6 +2,8 @@ const replyAdd = document.getElementById("replyAdd");
 const replyContents = document.getElementById("replyContents");
 const commentListResult = document.getElementById("commentListResult");
 //const pageLink = document.querySelectorAll(".page-link");
+const contentsConfirm = document.getElementById("contentsConfirm");
+const closeModal = document.getElementById('closeModal')
 
 replyAdd.addEventListener("click",function(){
     let xhttp = new XMLHttpRequest();
@@ -89,45 +91,41 @@ commentListResult.addEventListener('click',function(e){
     e.preventDefault();
 })
 
-// update
+// update버튼 클릭 후 데이터를 넣고 담아 모달창 불러오기
 commentListResult.addEventListener('click',function(e){
     let updateButton = e.target;
     if(updateButton.classList.contains("update")){
         //console.log(updateButton.parentNode.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling);
         let num = updateButton.getAttribute("data-comment-num");
-        let contents = document.getElementById('contents'+num);
-        //console.log(contents);
-        //contents.innerHTML='<textarea name="" id="" cols="30" rows="3">'+contents.innerHTML+'</textarea>';
-        contents.firstChild.removeAttribute("readonly");
-        let btn = document.createElement('button');
-        let attr = document.createAttribute('class');
-        attr.value='btn btn-primary';
-        btn.setAttributeNode(attr);
-        attr = document.createTextNode("확인");
-        btn.appendChild(attr);
-        contents.appendChild(btn);
-        
-        btn.addEventListener('click',function(){
-            console.log(contents.firstChild.value);
-            console.log(num);
+        let contents = document.getElementById('contents'+num); //td
+        console.log(contents);
+        let contentsTextArea= document.getElementById("contents") //Modal textArea
+        contentsTextArea.innerText = contents.innerText;
+        contentsConfirm.setAttribute("data-comment-num",num);
 
-            let xhttp = new XMLHttpRequest();
-            xhttp.open('POST',"../bankBookComment/update");
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send('num='+num+"&contents="+contents.firstChild.value);
-            xhttp.addEventListener("readystatechange", function(){
-                if(this.readyState==4 && this.status==200){
-                   let result = this.responseText.trim();
-                   if(result==1){
-                    alert("수정이 성공 되었습니다.");
-                    getList(1);
-                   } else{
-                    alert("수정 실패");
-                   }
-                }
-            })
-        })
     }
     e.preventDefault();
 })
 
+// modal에서 확인버튼과 cancel버튼 눌렀을 때 동작
+contentsConfirm.addEventListener("click", function(){
+    console.log('Update Post');
+    let updateContents = document.getElementById("contents").value;
+    let num = contentsConfirm.getAttribute('data-comment-num');
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "../bankBookComment/update");
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("num="+num+"&contents="+updateContents)
+        xhttp.addEventListener("readystatechange", function(){
+            if(this.readyState==4 && this.status==200){
+               let result = this.responseText.trim();
+               if(result==1){
+                alert("수정 성공");
+                closeModal.click();
+                getList(1);
+               } else{
+                alert("수정 실패");
+               }
+            }
+        })
+})
