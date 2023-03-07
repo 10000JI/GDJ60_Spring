@@ -16,7 +16,7 @@ replyAdd.addEventListener("click",function(){
 
     fetch('../bankBookComment/add', {
         method:'POST',
-        headers:{'Content-type':"application/x-www-form-urlencoded"},
+       // headers:{'Content-type':"application/x-www-form-urlencoded"},
         body: form,
     }).then((response)=> response.st)
     .then((res)=>{
