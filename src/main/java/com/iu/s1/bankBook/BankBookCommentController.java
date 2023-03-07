@@ -44,6 +44,7 @@ public class BankBookCommentController {
 		MemberDTO memberDTO =(MemberDTO) session.getAttribute("member");
 		//bankBookCommentDTO.setWriter(memberDTO.getId());
 		bankBookCommentDTO.setWriter("admin02");
+		System.out.println("num : "+bankBookCommentDTO.getBookNum());
 		int result = bankBookCommentService.setBoardAdd(bankBookCommentDTO, null, session);			
 		mv.addObject("result",result);
 		mv.setViewName("common/ajaxResult");
