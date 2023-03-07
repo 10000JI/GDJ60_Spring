@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>저축상품 추가</title>
 <c:import url="../template/common_css.jsp"></c:import>
+
+
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
@@ -64,6 +66,7 @@
 	<script type="text/javascript" src="../resources/js/fileManager.js"></script>
 	<script>
 		setMax(3);
+		
 		//setParam('f');
 	</script>
 	<c:import url="../template/common_js.jsp"></c:import>
