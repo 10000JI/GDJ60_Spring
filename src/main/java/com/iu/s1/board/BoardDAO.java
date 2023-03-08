@@ -25,4 +25,7 @@ public interface BoardDAO extends BbsDAO{
 	//BoardFileDetail
 	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception; 
 	
+	//BoardFileDelte
+	//update 전 delete로 선택한건 지우자
+	public int setBoardFileDelete(Long fileNum) throws Exception;
 }

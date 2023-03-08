@@ -41,9 +41,9 @@
 			</div>
 			
 			<div id="fileList">
-<!-- 				<div class="input-group mb-3">
-						<input type="file" class="form-control" id="files" name="pic">
-						<button type="button id=fileDelete">X</button>
+<!-- 				<div class="input-group mb-3", id="f'+idx+'">
+						<input type="file" class="form-control" name="'+param+'">
+						<button type="button class="btn btn-outline-danger dels" data-dels-id="f'+idx+'">X</button>
 					</div> -->
 				<button type="button" class="btn btn-primary" id="fileAdd">ADD</button>
 			</div>
@@ -57,8 +57,8 @@
 
 	<script type="text/javascript" src="../resources/js/fileManager.js"></script>
 	<script>
-		setMax(3);
-		setParam('files');
+		setMax(5);
+		setParam('addFiles');
 		$('#contents').summernote();
 	</script>
 	<c:import url="../template/common_js.jsp"></c:import>

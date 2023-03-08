@@ -12,7 +12,7 @@ $("#replyAdd").click(function(){
     form.append("contents", $("#replyContents").val()); //<form><input type="text" name="contents" value="dfds"></form>
     form.append("bookNum", $('#replyAdd').attr('data-book-bookNum'))//<form><input type="text" name="bookNum" value="12"></form>
 
-
+    //이벤트는 작동되는데 전송이 안되는 경우는 fetch 검사
     fetch('../bankBookComment/add', {
         method:'POST',
        // headers:{'Content-type':"application/x-www-form-urlencoded"},
