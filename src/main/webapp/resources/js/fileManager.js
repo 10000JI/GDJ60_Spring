@@ -63,24 +63,69 @@ $("#fileAdd").click(()=>{
 });
 
 $(".deleteCheck").click(function(){
-    if($(this).prop('checked')){
-        let result = confirm('파일이 영구 삭제 됩니다.')
-        if(result){
-            count--;
-        } else{
-            $(this).prop('checked',false);
-        }
+    let result = confirm('파일이 영구 삭제 됩니다.')
+    let ch = $(this)
+    if(result){
+        let fileNum = $(this).val();
+        $.ajax({
+            type:'POST',
+            url: './boardFileDelete',
+            data:{
+                fileNum: fileNum
+            },
+            success:function(response){
+                if(response.trim() > 0){
+                    alert("삭제되었습니다");
+                    //this: ajax객체 자기 자신
+                    console.log($(ch))
+                    ch.parent().parent().remove();
+                    count --;
+                }else{
+                    alert("삭제 실패<br> 관리자에게 문의하세요")
+                }
+            },
+            error:function(){
 
-    }else{
-        if(count==5){
-            console.log('하나는 지워야 함')
-            console.log(idx);
-            idx--;
-            $("#f"+idx).remove();
-            return;
-        }
-        count++;
+            }
+        })
+
+        //ajax DB에서 삭제
+        
+        //fetch : GET
+        // fetch("URL?p=1", {
+        //     method: 'GET'
+        // }).then((response)=>response.text())
+        // .then((res)=>{
+        //     //
+        // })
+
+        //Jquery Ajax : GET
+        // $.get("URL?p=1",function(response){
+        //     //
+        // })
+
+        //--------------------
+        
+        //fetch : POST
+        // fetch("URL",{
+        //     method='POST',
+        //     headers:{
+        //         'Conents-Type':'X,,,'
+        //     },
+        //     body: "p=1"
+        // }).then((response)=>response.text())
+        // .then((res)=>{
+            
+        // })
+
+        //Jquery Ajax : POST
+        //$.post("URL",{p:1}, function(res){})
+
+
+    }else {
+        $(this).prop('checked',false)
     }
+
 })
 
 
