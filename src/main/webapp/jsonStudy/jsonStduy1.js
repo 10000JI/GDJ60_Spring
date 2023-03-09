@@ -27,7 +27,6 @@ $.get("https://dummyjson.com/products",(response)=>{
 $("#productList").on("click",".detail",function(e){
     console.log("ID:"+$(this).attr('data-productId'));
     $.get("https://dummyjson.com/products/"+$(this).attr('data-productId'),(response)=>{
-        console.log(response);
         console.log(response.title);
     });
     e.preventDefault();
