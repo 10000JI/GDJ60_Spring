@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -45,6 +46,13 @@ public class QnaController {
 		List<BbsDTO> ar = qnaService.getBoardList(pager);
 		mv.addObject("list", ar);
 		mv.setViewName("board/list");
+		
+		RestTemplate restTemplate = new RestTemplate();
+		
+		//URL, Method, parameter, header
+		
+		String result = restTemplate.getForObject("https://dummyjson.com/products/1", String.class);
+		System.out.println(result);
 		return mv;
 	}
 	

@@ -20,7 +20,7 @@
 		<form class="col-md-6" action="./memberLogin", method="post">
 			<div class="mb-3">
 				<label for="id" class="form-label fw-bold">아이디</label> 
-				<input type="text" name="id" class="form-control" id="id" placeholder="아이디 입력">
+				<input type="text" value="${cookie.rememberId.value}" name="id" class="form-control" id="id" placeholder="아이디 입력">
 			</div>
 			
 			<div class="mb-3">
@@ -31,6 +31,7 @@
 			<div class="mb-3">
 				<button class="btn btn-outline-success fw-bold" type="submit">확인</button> 
 			</div>
+				<input type="checkbox" name="remember" value="remember" class="form-check-input"> 
 		</form>
 	</div>
 </div>
